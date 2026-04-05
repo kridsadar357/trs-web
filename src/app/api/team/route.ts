@@ -10,7 +10,8 @@ export async function GET() {
       orderBy: { order: "asc" },
     });
     return NextResponse.json(members);
-  } catch {
+  } catch (e) {
+    console.error("GET /api/team", e);
     return NextResponse.json([]);
   }
 }

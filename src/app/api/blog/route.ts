@@ -10,7 +10,8 @@ export async function GET() {
       orderBy: { publishedAt: "desc" },
     });
     return NextResponse.json(posts);
-  } catch {
+  } catch (e) {
+    console.error("GET /api/blog", e);
     return NextResponse.json([]);
   }
 }

@@ -11,7 +11,8 @@ export async function GET() {
       map[s.key] = s.value;
     }
     return NextResponse.json(map);
-  } catch {
+  } catch (e) {
+    console.error("GET /api/settings", e);
     return NextResponse.json({});
   }
 }

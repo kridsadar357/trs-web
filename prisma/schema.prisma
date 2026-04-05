@@ -20,6 +20,8 @@ model User {
 
   accounts Account[]
   sessions Session[]
+
+  @@map("user")
 }
 
 model Account {
@@ -39,6 +41,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map("account")
 }
 
 model Session {
@@ -47,6 +50,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
 }
 
 model VerificationToken {
@@ -55,6 +60,7 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+  @@map("verificationtoken")
 }
 
 model Page {
@@ -70,6 +76,8 @@ model Page {
   order           Int      @default(0)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  @@map("page")
 }
 
 model Service {
@@ -85,6 +93,8 @@ model Service {
   published     Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@map("service")
 }
 
 model PortfolioItem {
@@ -103,6 +113,8 @@ model PortfolioItem {
   published    Boolean   @default(true)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+
+  @@map("portfolioitem")
 }
 
 model TeamMember {
@@ -118,6 +130,8 @@ model TeamMember {
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("teammember")
 }
 
 model Testimonial {
@@ -132,6 +146,8 @@ model Testimonial {
   published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("testimonial")
 }
 
 model BlogPost {
@@ -150,6 +166,8 @@ model BlogPost {
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@map("blogpost")
 }
 
 model ContactSubmission {
@@ -164,10 +182,14 @@ model ContactSubmission {
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("contactsubmission")
 }
 
 model SiteSetting {
   id    String @id @default(cuid())
   key   String @unique @db.VarChar(100)
   value String @db.Text
+
+  @@map("sitesetting")
 }

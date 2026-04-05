@@ -10,7 +10,8 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(items);
-  } catch {
+  } catch (e) {
+    console.error("GET /api/portfolio", e);
     return NextResponse.json([]);
   }
 }
