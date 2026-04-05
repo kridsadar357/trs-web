@@ -1,0 +1,610 @@
+=== ROOT FILES ===
+.env
+.env.example
+.eslintrc.json
+.gitignore
+  app-build-manifest.json
+  build-manifest.json
+    .previewinfo
+    .rscinfo
+    .tsbuildinfo
+    chrome-devtools-workspace-uuid
+      .cache_p73njx
+    next-devtools-config.json
+        0.pack.gz
+        1.pack.gz
+        10.pack.gz
+        11.pack.gz
+        12.pack.gz
+        13.pack.gz
+        14.pack.gz
+        15.pack.gz
+        16.pack.gz
+        17.pack.gz
+        18.pack.gz
+        19.pack.gz
+        2.pack.gz
+        20.pack.gz
+        21.pack.gz
+        22.pack.gz
+        23.pack.gz
+        24.pack.gz
+        25.pack.gz
+        26.pack.gz
+        3.pack.gz
+        4.pack.gz
+        5.pack.gz
+        6.pack.gz
+        7.pack.gz
+        8.pack.gz
+        9.pack.gz
+        index.pack.gz
+        index.pack.gz.old
+        0.pack.gz
+        1.pack.gz
+        index.pack.gz
+        index.pack.gz.old
+        0.pack
+        index.pack
+        0.pack
+        index.pack
+        0.pack.gz
+        1.pack.gz
+        10.pack.gz
+        11.pack.gz
+        12.pack.gz
+        13.pack.gz
+        14.pack.gz
+        15.pack.gz
+        16.pack.gz
+        17.pack.gz
+        18.pack.gz
+        19.pack.gz
+        2.pack.gz
+        20.pack.gz
+        21.pack.gz
+        22.pack.gz
+        23.pack.gz
+        24.pack.gz
+        25.pack.gz
+        26.pack.gz
+        27.pack.gz
+        3.pack.gz
+        4.pack.gz
+        5.pack.gz
+        6.pack.gz
+        7.pack.gz
+        8.pack.gz
+        9.pack.gz
+        index.pack.gz
+        index.pack.gz.old
+        0.pack
+        index.pack
+  package.json
+  prerender-manifest.json
+  react-loadable-manifest.json
+  routes-manifest.json
+          page.js
+          page_client-reference-manifest.js
+          page.js
+          page_client-reference-manifest.js
+        page.js
+          page.js
+          page_client-reference-manifest.js
+        page_client-reference-manifest.js
+          page.js
+          page_client-reference-manifest.js
+            page.js
+            page_client-reference-manifest.js
+            page.js
+            page_client-reference-manifest.js
+          page.js
+          page_client-reference-manifest.js
+          page.js
+          page_client-reference-manifest.js
+            route.js
+            route_client-reference-manifest.js
+              route.js
+              route_client-reference-manifest.js
+            route.js
+            route_client-reference-manifest.js
+            route.js
+            route_client-reference-manifest.js
+            route.js
+            route_client-reference-manifest.js
+          route.js
+          route_client-reference-manifest.js
+        page.js
+        page_client-reference-manifest.js
+      page.js
+      page_client-reference-manifest.js
+        page.js
+        page_client-reference-manifest.js
+    app-paths-manifest.json
+    interception-route-rewrite-manifest.js
+    middleware-build-manifest.js
+    middleware-manifest.json
+    middleware-react-loadable-manifest.js
+    next-font-manifest.js
+    next-font-manifest.json
+    pages-manifest.json
+    server-reference-manifest.js
+    server-reference-manifest.json
+      @babel.js
+      @panva.js
+      @popperjs.js
+      @swc.js
+      @tiptap.js
+      bcryptjs.js
+      clsx.js
+      cookie.js
+      jose.js
+      linkifyjs.js
+      lru-cache.js
+      lucide-react.js
+      next-auth.js
+      next-themes.js
+      next.js
+      oauth.js
+      object-hash.js
+      oidc-token-hash.js
+      openid-client.js
+      orderedmap.js
+      preact-render-to-string.js
+      preact.js
+      prosemirror-commands.js
+      prosemirror-dropcursor.js
+      prosemirror-gapcursor.js
+      prosemirror-history.js
+      prosemirror-keymap.js
+      prosemirror-model.js
+      prosemirror-schema-list.js
+      prosemirror-state.js
+      prosemirror-transform.js
+      prosemirror-view.js
+      rope-sequence.js
+      tailwind-merge.js
+      tippy.js.js
+      uuid.js
+      w3c-keyname.js
+      yallist.js
+    webpack-runtime.js
+            page.js
+          layout.js
+            page.js
+          page.js
+            page.js
+            page.js
+              page.js
+              page.js
+            page.js
+            page.js
+              route.js
+                route.js
+              route.js
+              route.js
+              route.js
+            route.js
+          page.js
+        layout.js
+        page.js
+          page.js
+      app-pages-internals.js
+      main-app.js
+      polyfills.js
+      webpack.js
+      _app-pages-browser_node_modules_next_dist_client_dev_noop-turbopack-hmr_js.js
+        layout.css
+      _buildManifest.js
+      _ssgManifest.js
+      19cfc7226ec3afaa-s.woff2
+      21350d82a1f187e9-s.woff2
+      636a5ac981f94f8b-s.p.woff2
+      6fe53d21e6e7ebd8-s.woff2
+      8e9860b6e62d6359-s.woff2
+      8ebc6e9dde468c4a-s.woff2
+      9e7b0a821b9dfcb4-s.woff2
+      ba9851c3c22cd980-s.woff2
+      c5fe6dc8356a8c31-s.woff2
+      df0a9ae256c0569c-s.woff2
+      e4af272ccee01ff0-s.p.woff2
+      12aa9c6bf9766759.webpack.hot-update.json
+      16fa379382feefda.webpack.hot-update.json
+      1ab5984e8bf16b04.webpack.hot-update.json
+      33f593c1f6d9f989.webpack.hot-update.json
+      34d27055a9141b42.webpack.hot-update.json
+      3956a6e65b3fd177.webpack.hot-update.json
+      3bba4d624877096e.webpack.hot-update.json
+      46ed1159e0353d5b.webpack.hot-update.json
+      4915c570436c69c3.webpack.hot-update.json
+      49cb5fc552e7d9f8.webpack.hot-update.json
+      4b4425934c30ef7f.webpack.hot-update.json
+      57ca7673f7a77011.webpack.hot-update.json
+      633457081244afec._.hot-update.json
+      732e569c271db079.webpack.hot-update.json
+      7980d6b811377cb4.webpack.hot-update.json
+      7adee93a79a36a4d.webpack.hot-update.json
+      85dc1976fa3679d4.webpack.hot-update.json
+        layout.4b4425934c30ef7f.hot-update.js
+        layout.7980d6b811377cb4.hot-update.js
+      c86da900918959a2.webpack.hot-update.json
+      ed61d1a4472535a9.webpack.hot-update.json
+      f8f2cca00412c3df.webpack.hot-update.json
+      webpack.12aa9c6bf9766759.hot-update.js
+      webpack.16fa379382feefda.hot-update.js
+      webpack.1ab5984e8bf16b04.hot-update.js
+      webpack.33f593c1f6d9f989.hot-update.js
+      webpack.34d27055a9141b42.hot-update.js
+      webpack.3956a6e65b3fd177.hot-update.js
+      webpack.3bba4d624877096e.hot-update.js
+      webpack.46ed1159e0353d5b.hot-update.js
+      webpack.4915c570436c69c3.hot-update.js
+      webpack.49cb5fc552e7d9f8.hot-update.js
+      webpack.4b4425934c30ef7f.hot-update.js
+      webpack.57ca7673f7a77011.hot-update.js
+      webpack.732e569c271db079.hot-update.js
+      webpack.7980d6b811377cb4.hot-update.js
+      webpack.7adee93a79a36a4d.hot-update.js
+      webpack.85dc1976fa3679d4.hot-update.js
+      webpack.c86da900918959a2.hot-update.js
+      webpack.ed61d1a4472535a9.hot-update.js
+      webpack.f8f2cca00412c3df.hot-update.js
+  trace
+          page.ts
+        layout.ts
+          page.ts
+        page.ts
+          page.ts
+          page.ts
+            page.ts
+            page.ts
+          page.ts
+          page.ts
+            route.ts
+              route.ts
+            route.ts
+            route.ts
+            route.ts
+          route.ts
+        page.ts
+      layout.ts
+      page.ts
+        page.ts
+    cache-life.d.ts
+    package.json
+    routes.d.ts
+    validator.ts
+next-env.d.ts
+next.config.js
+package-lock.json
+package.json
+postcss.config.js
+  schema.prisma
+  seed.ts
+README.md
+      page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+        page.tsx
+      layout.tsx
+        page.tsx
+      page.tsx
+        page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+          page.tsx
+        page.tsx
+          page.tsx
+          route.ts
+            route.ts
+            route.ts
+          route.ts
+            route.ts
+          route.ts
+            route.ts
+          route.ts
+          route.ts
+            route.ts
+          route.ts
+            route.ts
+          route.ts
+        route.ts
+        route.ts
+        route.ts
+        route.ts
+        route.ts
+        route.ts
+        route.ts
+      page.tsx
+        page.tsx
+      page.tsx
+    globals.css
+    layout.tsx
+    page.tsx
+      page.tsx
+      page.tsx
+      page.tsx
+      admin-form.tsx
+      admin-layout.tsx
+      image-upload.tsx
+      rich-text-editor.tsx
+    LanguageSwitcher.tsx
+      footer.tsx
+      header.tsx
+      site-chrome.tsx
+      admin-provider.tsx
+      theme-provider.tsx
+      cta-section.tsx
+      hero-section.tsx
+      portfolio-section.tsx
+      services-section.tsx
+      testimonials-section.tsx
+    theme-toggle.tsx
+      badge.tsx
+      button.tsx
+      card.tsx
+      input.tsx
+      label.tsx
+      textarea.tsx
+    index.ts
+      en.json
+      th.json
+    auth.ts
+    prisma.ts
+    slugify.ts
+    utils.ts
+tailwind.config.ts
+tsconfig.json
+__scan_project__.js
+
+=== SRC STRUCTURE ===
+app/
+  about/
+    page.tsx
+  admin/
+    blog/
+      new/
+        page.tsx
+      page.tsx
+      [id]/
+        page.tsx
+    contacts/
+      page.tsx
+    layout.tsx
+    login/
+      page.tsx
+    page.tsx
+    pages/
+      page.tsx
+    portfolio/
+      new/
+        page.tsx
+      page.tsx
+      [id]/
+        page.tsx
+    services/
+      new/
+        page.tsx
+      page.tsx
+      [id]/
+        page.tsx
+    settings/
+      page.tsx
+    team/
+      new/
+        page.tsx
+      page.tsx
+      [id]/
+        page.tsx
+    testimonials/
+      new/
+        page.tsx
+      page.tsx
+      [id]/
+        page.tsx
+  api/
+    admin/
+      blog/
+        route.ts
+        [id]/
+          route.ts
+      contacts/
+        [id]/
+          route.ts
+      portfolio/
+        route.ts
+        [id]/
+          route.ts
+      services/
+        route.ts
+        [id]/
+          route.ts
+      settings/
+        route.ts
+      team/
+        route.ts
+        [id]/
+          route.ts
+      testimonials/
+        route.ts
+        [id]/
+          route.ts
+    auth/
+      [...nextauth]/
+        route.ts
+    blog/
+      route.ts
+    contact/
+      route.ts
+    portfolio/
+      route.ts
+    services/
+      route.ts
+    team/
+      route.ts
+    testimonials/
+      route.ts
+    upload/
+      route.ts
+  blog/
+    page.tsx
+    [slug]/
+      page.tsx
+  contact/
+    page.tsx
+  globals.css
+  layout.tsx
+  page.tsx
+  portfolio/
+    page.tsx
+  services/
+    page.tsx
+  team/
+    page.tsx
+components/
+  admin/
+    admin-form.tsx
+    admin-layout.tsx
+    image-upload.tsx
+    rich-text-editor.tsx
+  LanguageSwitcher.tsx
+  layout/
+    footer.tsx
+    header.tsx
+    site-chrome.tsx
+  providers/
+    admin-provider.tsx
+    theme-provider.tsx
+  sections/
+    cta-section.tsx
+    hero-section.tsx
+    portfolio-section.tsx
+    services-section.tsx
+    testimonials-section.tsx
+  theme-toggle.tsx
+  ui/
+    badge.tsx
+    button.tsx
+    card.tsx
+    input.tsx
+    label.tsx
+    textarea.tsx
+i18n/
+  index.ts
+  locales/
+    en.json
+    th.json
+lib/
+  auth.ts
+  prisma.ts
+  slugify.ts
+  utils.ts
+
+=== package.json ===
+{
+  "name": "trs-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "npx prisma db push",
+    "db:generate": "npx prisma generate",
+    "db:studio": "npx prisma studio",
+    "db:seed": "npx tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@prisma/client": "^6.2.0",
+    "@tiptap/extension-color": "^2.10.0",
+    "@tiptap/extension-image": "^2.27.2",
+    "@tiptap/extension-link": "^2.27.2",
+    "@tiptap/extension-placeholder": "^2.10.0",
+    "@tiptap/extension-text-align": "^2.10.0",
+    "@tiptap/extension-text-style": "^2.10.0",
+    "@tiptap/extension-underline": "^2.10.0",
+    "@tiptap/pm": "^2.27.2",
+    "@tiptap/react": "^2.27.2",
+    "@tiptap/starter-kit": "^2.27.2",
+    "bcryptjs": "^2.4.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "i18next": "^26.0.3",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "lucide-react": "^0.468.0",
+    "next": "^15.1.0",
+    "next-auth": "^4.24.0",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.0",
+    "react-i18next": "^17.0.2",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.1.0",
+    "postcss": "^8.4.0",
+    "prisma": "^6.2.0",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
+
+
+=== src/main.tsx ===
+Not found: ENOENT: no such file or directory, open 'c:\TRS\Web\src\main.tsx'
+
+=== src/main.jsx ===
+Not found: ENOENT: no such file or directory, open 'c:\TRS\Web\src\main.jsx'
+
+=== src/App.tsx ===
+Not found: ENOENT: no such file or directory, open 'c:\TRS\Web\src\App.tsx'
+
+=== src/App.jsx ===
+Not found: ENOENT: no such file or directory, open 'c:\TRS\Web\src\App.jsx'
+
+=== src/App.vue ===
+Not found: ENOENT: no such file or directory, open 'c:\TRS\Web\src\App.vue'
+
+=== NEXT.JS CHECK ===
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
+
+No next.config.mjs
+
+=== VITE CHECK ===
+No vite.config.ts
+No vite.config.js

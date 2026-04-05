@@ -1,0 +1,10 @@
+=== INTEGRATION REPORT ===
+
+Entry file: src/app/layout.tsx
+App file: src/app/layout.tsx
+Header/Nav file: src\app\admin\layout.tsx
+
+Entry patched: YES - added i18n import to src/app/layout.tsx
+Header patched: YES - added LanguageSwitcher to src\app\admin\layout.tsx
+
+=== MANUAL STEPS ===

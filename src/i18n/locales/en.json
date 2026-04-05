@@ -1,0 +1,119 @@
+{
+  "common": {
+    "appName": "TRS",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "none": "None",
+    "other": "Other",
+    "actions": "Actions",
+    "status": "Status",
+    "noData": "No data available",
+    "noResults": "No results found",
+    "language": "Language",
+    "thai": "Thai",
+    "english": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "welcomeBack": "Welcome Back",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "signInWith": "Sign in with"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "statistics": "Statistics",
+    "recentActivity": "Recent Activity",
+    "totalUsers": "Total Users",
+    "totalOrders": "Total Orders",
+    "revenue": "Revenue",
+    "growth": "Growth"
+  },
+  "site": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "team": "Team",
+      "blog": "Blog",
+      "contact": "Contact",
+      "company": "Company"
+    },
+    "cta": {
+      "getStarted": "Get Started"
+    },
+    "heroDefaults": {
+      "badge": "Enterprise solutions",
+      "titleBefore": "Integrated",
+      "titleHighlight": "end-to-end systems",
+      "titleAfter": "built for scale",
+      "subtitle": "POS for forecourts, inventory control, and ERP — engineered for reliability, compliance, and day-to-day operations.",
+      "ctaPrimary": "Get started",
+      "ctaSecondary": "View work",
+      "imageAlt": "Business software on desktop, tablet, and phone",
+      "stat1Value": "15+",
+      "stat1Label": "Years experience",
+      "stat2Value": "500+",
+      "stat2Label": "Sites served",
+      "stat3Value": "24/7",
+      "stat3Label": "Support"
+    },
+    "footer": {
+      "tagline": "Modern digital agency delivering exceptional web experiences, custom software, and creative solutions.",
+      "quickLinks": "Quick Links",
+      "servicesTitle": "Services",
+      "contactTitle": "Contact",
+      "copyright": "© {{year}} TRS. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "serviceWebDev": "Web Development",
+      "serviceUiUx": "UI/UX Design",
+      "serviceMobile": "Mobile Apps",
+      "serviceCloud": "Cloud Solutions"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "appearance": "Appearance",
+    "notifications": "Notifications",
+    "security": "Security",
+    "languageSettings": "Language Settings",
+    "selectLanguage": "Select Language",
+    "theme": "Theme",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode"
+  }
+}

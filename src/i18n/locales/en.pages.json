@@ -1,0 +1,510 @@
+{
+  "pages": {
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist or has been moved.",
+      "cta": "Back to home"
+    },
+    "legal": {
+      "privacyTitle": "Privacy Policy",
+      "privacyUpdated": "Last updated: April 2026",
+      "privacyP1": "TRS (\"we\", \"us\") respects your privacy. This policy describes how we collect, use, and protect information when you use our website and services.",
+      "privacyP2": "We may collect information you provide (such as name, email, and message content) when you contact us or use our forms. We use this information to respond to inquiries and improve our services.",
+      "privacyP3": "We do not sell your personal data. We may use trusted service providers who process data on our behalf under appropriate agreements.",
+      "privacyP4": "You may request access, correction, or deletion of your personal data where applicable by contacting us at the email below.",
+      "termsTitle": "Terms of Service",
+      "termsUpdated": "Last updated: April 2026",
+      "termsP1": "By accessing this website, you agree to these terms. If you do not agree, please do not use the site.",
+      "termsP2": "Content on this site is for general information. We strive for accuracy but make no warranties regarding completeness or suitability for a particular purpose.",
+      "termsP3": "You agree not to misuse the site, attempt unauthorized access, or interfere with its operation.",
+      "termsP4": "We may update these terms from time to time. Continued use after changes constitutes acceptance of the revised terms.",
+      "contactEmailLabel": "Questions? Contact us at"
+    },
+    "meta": {
+      "homeDesc": "Modern digital agency — web development, design, and creative solutions.",
+      "aboutDesc": "Learn about TRS, our values, and our journey building digital experiences since 2016.",
+      "servicesDesc": "Web development, UI/UX, mobile apps, cloud, marketing, and consulting.",
+      "portfolioDesc": "Selected projects across web, e-commerce, mobile, and cloud.",
+      "teamDesc": "Meet the people behind TRS.",
+      "blogDesc": "Articles on technology, design, and digital strategy.",
+      "contactDesc": "Get in touch for your next project. We reply within one business day."
+    },
+    "home": {
+      "hero": {
+        "badge": "Building the Future of Digital",
+        "titleBefore": "We Build",
+        "titleHighlight": "Digital Experiences",
+        "titleAfter": "That Matter",
+        "subtitle": "TRS is a modern digital agency specializing in custom web development, stunning design, and innovative solutions that drive real business results.",
+        "ctaPrimary": "Start a Project",
+        "ctaSecondary": "View Our Work",
+        "stats": [
+          { "value": "150+", "label": "Projects Delivered" },
+          { "value": "50+", "label": "Happy Clients" },
+          { "value": "10+", "label": "Years Experience" },
+          { "value": "99%", "label": "Client Satisfaction" }
+        ]
+      },
+      "services": {
+        "badge": "Our Services",
+        "titleBefore": "Everything You Need to",
+        "titleHighlight": "Succeed Online",
+        "subtitle": "We offer comprehensive digital solutions tailored to your business needs, from concept to deployment and beyond.",
+        "viewAll": "View All Services",
+        "learnMore": "See details",
+        "items": [
+          { "title": "Web Development", "description": "Custom web applications built with cutting-edge technologies for maximum performance." },
+          { "title": "UI/UX Design", "description": "Beautiful, intuitive designs that put users first and drive engagement." },
+          { "title": "Mobile Development", "description": "Native and cross-platform mobile apps that deliver seamless experiences." },
+          { "title": "Cloud Solutions", "description": "Scalable cloud infrastructure and DevOps for reliable applications." },
+          { "title": "Digital Marketing", "description": "Data-driven strategies that increase visibility and conversions." },
+          { "title": "Tech Consulting", "description": "Expert guidance on technology strategy and digital transformation." }
+        ]
+      },
+      "portfolio": {
+        "badge": "Our Work",
+        "titleBefore": "Featured",
+        "titleHighlight": "Projects",
+        "subtitle": "Take a look at some of our latest work and see how we help businesses thrive in the digital world.",
+        "viewAll": "View All Projects",
+        "items": [
+          {
+            "title": "FinTrack Dashboard",
+            "category": "Web Application",
+            "description": "Real-time financial analytics platform with advanced charting and portfolio management.",
+            "tags": ["Next.js", "D3.js", "PostgreSQL"],
+            "gradient": "from-blue-600 to-purple-600"
+          },
+          {
+            "title": "EcoShop Marketplace",
+            "category": "E-commerce",
+            "description": "Sustainable marketplace connecting eco-conscious consumers with green businesses.",
+            "tags": ["React", "Node.js", "Stripe"],
+            "gradient": "from-green-600 to-teal-600"
+          },
+          {
+            "title": "HealthPulse App",
+            "category": "Mobile App",
+            "description": "AI-powered health tracking app with personalized wellness recommendations.",
+            "tags": ["React Native", "Python", "AI"],
+            "gradient": "from-pink-600 to-red-600"
+          }
+        ]
+      },
+      "testimonials": {
+        "badge": "Testimonials",
+        "titleBefore": "What Our",
+        "titleHighlight": "Clients Say",
+        "subtitle": "Don't just take our word for it — hear from the businesses we've helped succeed.",
+        "featured": "Featured",
+        "prev": "Previous testimonials",
+        "next": "Next testimonials",
+        "goToSlide": "Go to slide {{index}}",
+        "items": [
+          {
+            "name": "Sarah Johnson",
+            "role": "CEO",
+            "company": "TechVentures Inc.",
+            "content": "TRS transformed our digital presence completely. Their team delivered a stunning website that increased our conversions by 40%. Highly recommended!"
+          },
+          {
+            "name": "Michael Chen",
+            "role": "CTO",
+            "company": "DataFlow Systems",
+            "content": "Working with TRS was an absolute pleasure. They understood our complex requirements and delivered a robust platform ahead of schedule."
+          },
+          {
+            "name": "Emily Rodriguez",
+            "role": "Marketing Director",
+            "company": "GreenLeaf Brands",
+            "content": "The UI/UX design TRS created for our app was phenomenal. Our users love the intuitive interface and engagement metrics have skyrocketed."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Bring Your Vision to Life?",
+        "subtitle": "Let's discuss your project and create something extraordinary together. No commitment, just a conversation.",
+        "primary": "Start Your Project",
+        "secondary": "View Portfolio"
+      }
+    },
+    "contact": {
+      "badge": "Contact",
+      "title": "Let's Start a",
+      "titleHighlight": "Conversation",
+      "intro": "Have a project in mind? Want to explore how we can help your business grow? We'd love to hear from you. Fill out the form below and we'll get back to you within 24 hours.",
+      "successTitle": "Message Sent!",
+      "successBody": "Thank you for reaching out. We'll get back to you within 24 hours.",
+      "sendAnother": "Send Another Message",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "required": "Required fields are marked with *",
+      "send": "Send Message",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "officeLabel": "Office",
+      "hoursLabel": "Hours",
+      "hoursValue": "Mon – Fri: 9am – 6pm\nSat – Sun: Closed",
+      "quickTitle": "Quick Response",
+      "quickBody": "We typically respond within 2–4 business hours during working days."
+    },
+    "about": {
+      "badge": "About Us",
+      "titleBefore": "Building the",
+      "titleHighlight": "Future of Digital",
+      "intro": "TRS is a full-service digital agency passionate about creating exceptional web experiences. Since 2016, we've helped businesses of all sizes transform their digital presence and achieve their goals through innovative technology and creative design.",
+      "valuesTitleBefore": "Our",
+      "valuesTitleHighlight": "Values",
+      "valuesSubtitle": "The principles that guide everything we do.",
+      "values": [
+        {
+          "title": "Mission-Driven",
+          "description": "Every project starts with understanding your goals. We align our work with your business objectives to deliver meaningful impact."
+        },
+        {
+          "title": "Quality First",
+          "description": "We take pride in crafting exceptional digital experiences. No shortcuts, no compromises — just outstanding work."
+        },
+        {
+          "title": "Innovation",
+          "description": "We stay at the cutting edge of technology and design trends to bring you solutions that are ahead of the curve."
+        },
+        {
+          "title": "Collaboration",
+          "description": "Your project is a partnership. We work closely with you at every step to ensure the result exceeds expectations."
+        }
+      ],
+      "journeyTitleBefore": "Our",
+      "journeyTitleHighlight": "Journey",
+      "milestones": [
+        { "year": "2016", "event": "Founded TRS with a vision to transform digital experiences" },
+        { "year": "2018", "event": "Expanded to mobile development and cloud solutions" },
+        { "year": "2020", "event": "Reached 100+ successful project deliveries" },
+        { "year": "2022", "event": "Opened second office and grew team to 25+" },
+        { "year": "2024", "event": "Launched AI-powered solutions and consulting division" },
+        { "year": "2026", "event": "Serving clients across 15+ countries worldwide" }
+      ]
+    },
+    "servicesPage": {
+      "badge": "Services",
+      "titleBefore": "What We",
+      "titleHighlight": "Do Best",
+      "intro": "Comprehensive digital solutions tailored to your business needs. From concept to deployment and beyond, we're your one-stop partner for all things digital.",
+      "included": "What's Included",
+      "getQuote": "Get a Quote",
+      "noFeatureList": "Request a quote — we'll outline everything included for your project.",
+      "seeMore": "See more detail",
+      "backToServices": "Back to services",
+      "items": [
+        {
+          "title": "Web Development",
+          "description": "Custom web applications built with cutting-edge technologies. From responsive websites to complex web platforms, we deliver solutions that perform flawlessly across all devices and browsers.",
+          "features": [
+            "Custom Web Applications",
+            "Progressive Web Apps (PWA)",
+            "E-commerce Solutions",
+            "REST & GraphQL APIs",
+            "Content Management Systems",
+            "Performance Optimization"
+          ]
+        },
+        {
+          "title": "UI/UX Design",
+          "description": "Beautiful, intuitive designs that put users first. We create interfaces that are both stunning and functional, backed by research and iterative testing.",
+          "features": [
+            "User Research & Personas",
+            "Wireframing & Prototyping",
+            "Visual Design & Branding",
+            "Design Systems",
+            "Usability Testing",
+            "Accessibility (WCAG)"
+          ]
+        },
+        {
+          "title": "Mobile Development",
+          "description": "Native and cross-platform mobile applications that deliver seamless experiences. We build apps that users love and businesses rely on.",
+          "features": [
+            "iOS & Android Native",
+            "React Native / Flutter",
+            "App Store Optimization",
+            "Push Notifications",
+            "Offline Functionality",
+            "Analytics Integration"
+          ]
+        },
+        {
+          "title": "Cloud Solutions",
+          "description": "Scalable cloud infrastructure and DevOps solutions that keep your applications running smoothly. From architecture to deployment, we handle it all.",
+          "features": [
+            "AWS & Azure Architecture",
+            "CI/CD Pipelines",
+            "Microservices Design",
+            "Auto-scaling & Monitoring",
+            "Security Hardening",
+            "Cost Optimization"
+          ]
+        },
+        {
+          "title": "Digital Marketing",
+          "description": "Data-driven marketing strategies that increase visibility, engagement, and conversions. We help you reach the right audience at the right time.",
+          "features": [
+            "SEO Optimization",
+            "Content Strategy",
+            "Social Media Marketing",
+            "PPC Campaigns",
+            "Analytics & Reporting",
+            "Conversion Optimization"
+          ]
+        },
+        {
+          "title": "Tech Consulting",
+          "description": "Expert guidance on technology strategy, architecture decisions, and digital transformation. We help you make the right choices for long-term success.",
+          "features": [
+            "Technology Strategy",
+            "Architecture Review",
+            "Digital Transformation",
+            "Team Training",
+            "Code Audits",
+            "Vendor Evaluation"
+          ]
+        }
+      ]
+    },
+    "portfolioPage": {
+      "badge": "Portfolio",
+      "titleBefore": "Our",
+      "titleHighlight": "Work",
+      "intro": "Explore our portfolio of successful projects across various industries and technologies. Each project represents our commitment to quality and innovation.",
+      "client": "Client",
+      "backToPortfolio": "Back to portfolio",
+      "startProject": "Start a project",
+      "gallery": "Gallery",
+      "stack": "Tech stack",
+      "viewProject": "View full case study"
+    },
+    "teamPage": {
+      "badge": "Our Team",
+      "titleBefore": "Meet the",
+      "titleHighlight": "People",
+      "titleAfter": "Behind TRS",
+      "intro": "A diverse team of passionate creators, developers, and strategists united by a shared love for building exceptional digital experiences.",
+      "careersBadge": "Careers",
+      "careersTitle": "Join Our Team",
+      "careersBody": "We're always looking for talented individuals who share our passion for creating exceptional digital experiences. Check out our open positions.",
+      "careersCta": "View Open Positions",
+      "members": [
+        {
+          "name": "Alex Thompson",
+          "role": "Founder & CEO",
+          "bio": "Visionary leader with 15+ years in tech. Passionate about building innovative digital solutions that transform businesses and create lasting impact.",
+          "specialties": ["Strategy", "Leadership", "Innovation"]
+        },
+        {
+          "name": "Maya Patel",
+          "role": "Creative Director",
+          "bio": "Award-winning designer with an eye for clean, impactful design. Leads our creative team with passion and precision, ensuring every project exceeds expectations.",
+          "specialties": ["UI/UX", "Branding", "Design Systems"]
+        },
+        {
+          "name": "James Wilson",
+          "role": "Lead Developer",
+          "bio": "Full-stack expert specializing in scalable architectures. Turns complex problems into elegant, efficient solutions that stand the test of time.",
+          "specialties": ["Full-Stack", "Architecture", "DevOps"]
+        },
+        {
+          "name": "Lisa Chang",
+          "role": "Project Manager",
+          "bio": "Keeps everything running smoothly. Expert in agile methodologies with a talent for bringing teams together and delivering projects on time and on budget.",
+          "specialties": ["Agile", "Scrum", "Communication"]
+        },
+        {
+          "name": "David Kim",
+          "role": "Backend Engineer",
+          "bio": "Database and API specialist who builds rock-solid backend systems. Passionate about clean code, test-driven development, and system reliability.",
+          "specialties": ["Node.js", "Databases", "APIs"]
+        },
+        {
+          "name": "Sophie Martinez",
+          "role": "Frontend Developer",
+          "bio": "React and TypeScript enthusiast who creates pixel-perfect, accessible user interfaces. Believes great UX is a feature, not an afterthought.",
+          "specialties": ["React", "TypeScript", "Accessibility"]
+        }
+      ]
+    },
+    "blogPage": {
+      "badge": "Blog",
+      "titleBefore": "Insights &",
+      "titleHighlight": "Articles",
+      "intro": "Thoughts on technology, design, business, and the digital landscape from our team of experts.",
+      "latest": "Latest Articles",
+      "readMore": "Read More",
+      "posts": [
+        {
+          "slug": "future-web-development-2026",
+          "title": "The Future of Web Development in 2026",
+          "excerpt": "Exploring the latest trends and technologies shaping the web development landscape, from AI-powered tools to edge computing.",
+          "category": "Technology",
+          "author": "Alex Thompson",
+          "date": "2026-03-28",
+          "readTime": "8 min read",
+          "featured": true,
+          "gradient": "from-blue-600 to-indigo-600"
+        },
+        {
+          "slug": "design-systems-building-scale",
+          "title": "Design Systems: Building for Scale",
+          "excerpt": "How to create and maintain a design system that scales with your organization and accelerates product development.",
+          "category": "Design",
+          "author": "Maya Patel",
+          "date": "2026-03-20",
+          "readTime": "6 min read",
+          "featured": true,
+          "gradient": "from-purple-600 to-pink-600"
+        },
+        {
+          "slug": "cloud-native-architecture-guide",
+          "title": "A Guide to Cloud-Native Architecture",
+          "excerpt": "Understanding microservices, containerization, and how to build applications that thrive in the cloud from day one.",
+          "category": "Engineering",
+          "author": "James Wilson",
+          "date": "2026-03-15",
+          "readTime": "10 min read",
+          "featured": false,
+          "gradient": "from-green-600 to-teal-600"
+        },
+        {
+          "slug": "mobile-app-performance",
+          "title": "Optimizing Mobile App Performance",
+          "excerpt": "Practical tips and techniques for building fast, responsive mobile applications that users love.",
+          "category": "Mobile",
+          "author": "Sophie Martinez",
+          "date": "2026-03-10",
+          "readTime": "7 min read",
+          "featured": false,
+          "gradient": "from-orange-600 to-red-600"
+        },
+        {
+          "slug": "agile-project-management",
+          "title": "Agile Project Management Best Practices",
+          "excerpt": "Lessons learned from managing hundreds of digital projects using agile methodologies.",
+          "category": "Management",
+          "author": "Lisa Chang",
+          "date": "2026-03-05",
+          "readTime": "5 min read",
+          "featured": false,
+          "gradient": "from-amber-600 to-orange-600"
+        },
+        {
+          "slug": "api-security-best-practices",
+          "title": "API Security Best Practices for 2026",
+          "excerpt": "Essential security measures every developer should implement to protect their APIs from common vulnerabilities.",
+          "category": "Security",
+          "author": "David Kim",
+          "date": "2026-02-28",
+          "readTime": "9 min read",
+          "featured": false,
+          "gradient": "from-red-600 to-pink-600"
+        }
+      ]
+    },
+    "blogPost": {
+      "back": "Back to Blog",
+      "readTimeMins": "{{mins}} min read",
+      "introHeading": "Introduction",
+      "introP": "The web development landscape continues to evolve at an unprecedented pace. As we navigate through 2026, several key trends are reshaping how we build, deploy, and maintain web applications. Let's explore the most impactful developments that every developer and business should be aware of.",
+      "aiHeading": "AI-Powered Development",
+      "aiP": "Artificial intelligence has fundamentally transformed the development workflow. AI-assisted coding tools are now capable of understanding context, suggesting entire feature implementations, and even identifying potential bugs before they reach production. This isn't about replacing developers — it's about augmenting their capabilities and allowing them to focus on the creative and architectural decisions that truly matter.",
+      "aiSub": "Key AI Developments",
+      "aiLi1": "Context-aware code completion that understands your entire codebase",
+      "aiLi2": "Automated code review with security vulnerability detection",
+      "aiLi3": "AI-generated test suites that cover edge cases humans might miss",
+      "aiLi4": "Natural language to code translation for rapid prototyping",
+      "edgeHeading": "Edge Computing Goes Mainstream",
+      "edgeP": "Edge computing has moved from an experimental approach to a mainstream deployment strategy. By running computation closer to users, applications achieve dramatically lower latency and better user experiences. Modern frameworks now support edge-first deployment models that make this approach accessible to every developer.",
+      "wasmHeading": "WebAssembly Expansion",
+      "wasmP": "WebAssembly continues to break boundaries, enabling near-native performance for complex applications running in the browser. From video editing to 3D modeling to scientific computing, WASM is expanding what's possible on the web platform.",
+      "bizHeading": "What This Means for Your Business",
+      "bizP": "Staying ahead of these trends isn't just about technology for its own sake — it's about delivering better experiences to your users, reducing development costs, and gaining competitive advantages. At TRS, we're committed to leveraging these innovations to help our clients succeed.",
+      "ctaTitle": "Want to discuss how these trends apply to your project?",
+      "ctaButton": "Get in Touch",
+      "posts": {
+        "future-web-development-2026": {
+          "title": "The Future of Web Development in 2026",
+          "category": "Technology",
+          "author": "Alex Thompson",
+          "date": "2026-03-28",
+          "readTime": "8 min read",
+          "gradient": "from-blue-600 to-indigo-600"
+        },
+        "design-systems-building-scale": {
+          "title": "Design Systems: Building for Scale",
+          "category": "Design",
+          "author": "Maya Patel",
+          "date": "2026-03-20",
+          "readTime": "6 min read",
+          "gradient": "from-purple-600 to-pink-600"
+        }
+      }
+    },
+    "portfolioProjects": [
+      {
+        "title": "FinTrack Dashboard",
+        "slug": "fintrack-dashboard",
+        "category": "Web Application",
+        "description": "Comprehensive financial analytics dashboard for real-time portfolio tracking, market analysis, and automated reporting for institutional investors.",
+        "tags": ["Next.js", "TypeScript", "D3.js", "PostgreSQL"],
+        "gradient": "from-blue-600 to-indigo-600",
+        "client": "FinTrack Corp"
+      },
+      {
+        "title": "EcoShop Marketplace",
+        "slug": "ecoshop-marketplace",
+        "category": "E-commerce",
+        "description": "Sustainable e-commerce platform connecting eco-conscious consumers with verified green businesses. Features include carbon footprint tracking and ethical sourcing ratings.",
+        "tags": ["React", "Node.js", "Stripe", "MongoDB"],
+        "gradient": "from-green-600 to-emerald-600",
+        "client": "EcoShop Inc"
+      },
+      {
+        "title": "HealthPulse App",
+        "slug": "healthpulse-app",
+        "category": "Mobile App",
+        "description": "Health and wellness tracking app with AI-powered insights, personalized workout plans, and integration with wearable devices for comprehensive health monitoring.",
+        "tags": ["React Native", "Python", "TensorFlow", "Firebase"],
+        "gradient": "from-pink-600 to-rose-600",
+        "client": "HealthPulse"
+      },
+      {
+        "title": "CloudSync Platform",
+        "slug": "cloudsync-platform",
+        "category": "Cloud Platform",
+        "description": "Enterprise cloud management platform enabling seamless multi-cloud deployments, automated scaling, and comprehensive infrastructure monitoring.",
+        "tags": ["Go", "Kubernetes", "Terraform", "AWS"],
+        "gradient": "from-orange-600 to-amber-600",
+        "client": "CloudSync Ltd"
+      },
+      {
+        "title": "LearnHub LMS",
+        "slug": "learnhub-lms",
+        "category": "Web Application",
+        "description": "Modern learning management system with interactive courses, real-time collaboration, adaptive learning paths, and comprehensive analytics for educators.",
+        "tags": ["Next.js", "WebSockets", "Prisma", "PostgreSQL"],
+        "gradient": "from-violet-600 to-purple-600",
+        "client": "EduTech Global"
+      },
+      {
+        "title": "FoodieApp Delivery",
+        "slug": "foodieapp-delivery",
+        "category": "Mobile App",
+        "description": "Food delivery application with real-time order tracking, AI-powered restaurant recommendations, and seamless payment integration across multiple regions.",
+        "tags": ["Flutter", "Firebase", "Stripe", "Google Maps"],
+        "gradient": "from-red-600 to-orange-600",
+        "client": "FoodieApp"
+      }
+    ]
+  }
+}

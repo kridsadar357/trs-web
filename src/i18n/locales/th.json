@@ -1,0 +1,119 @@
+{
+  "common": {
+    "appName": "TRS",
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "retry": "ลองอีกครั้ง",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "search": "ค้นหา",
+    "close": "ปิด",
+    "confirm": "ยืนยัน",
+    "back": "กลับ",
+    "next": "ถัดไป",
+    "submit": "ส่ง",
+    "yes": "ใช่",
+    "no": "ไม่ใช่",
+    "all": "ทั้งหมด",
+    "none": "ไม่มี",
+    "other": "อื่นๆ",
+    "actions": "การดำเนินการ",
+    "status": "สถานะ",
+    "noData": "ไม่มีข้อมูล",
+    "noResults": "ไม่พบผลลัพธ์",
+    "language": "ภาษา",
+    "thai": "ภาษาไทย",
+    "english": "ภาษาอังกฤษ"
+  },
+  "nav": {
+    "home": "หน้าแรก",
+    "dashboard": "แดชบอร์ด",
+    "settings": "การตั้งค่า",
+    "profile": "โปรไฟล์",
+    "logout": "ออกจากระบบ",
+    "login": "เข้าสู่ระบบ",
+    "register": "สมัครสมาชิก"
+  },
+  "auth": {
+    "signIn": "เข้าสู่ระบบ",
+    "signUp": "สมัครสมาชิก",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "confirmPassword": "ยืนยันรหัสผ่าน",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "resetPassword": "รีเซ็ตรหัสผ่าน",
+    "welcomeBack": "ยินดีต้อนรับกลับ",
+    "createAccount": "สร้างบัญชี",
+    "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+    "dontHaveAccount": "ยังไม่มีบัญชี?",
+    "signInWith": "เข้าสู่ระบบด้วย"
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "overview": "ภาพรวม",
+    "statistics": "สถิติ",
+    "recentActivity": "กิจกรรมล่าสุด",
+    "totalUsers": "จำนวนผู้ใช้ทั้งหมด",
+    "totalOrders": "คำสั่งซื้อทั้งหมด",
+    "revenue": "รายได้",
+    "growth": "การเติบโต"
+  },
+  "site": {
+    "nav": {
+      "home": "หน้าแรก",
+      "about": "เกี่ยวกับเรา",
+      "services": "บริการ",
+      "portfolio": "ผลงาน",
+      "team": "ทีม",
+      "blog": "บล็อก",
+      "contact": "ติดต่อ",
+      "company": "องค์กร"
+    },
+    "cta": {
+      "getStarted": "เริ่มต้นใช้งาน"
+    },
+    "heroDefaults": {
+      "badge": "โซลูชันองค์กร",
+      "titleBefore": "บูรณาการ",
+      "titleHighlight": "ระบบครบวงจร",
+      "titleAfter": "เพื่อความสำเร็จ",
+      "subtitle": "POS สำหรับปั๊มน้ำมัน ตรวจสอบสต็อก และระบบ ERP — ออกแบบมาเพื่อความเสถียร การขยายตัว และการดำเนินงานจริงในทุกวัน",
+      "ctaPrimary": "เริ่มต้นใช้งาน",
+      "ctaSecondary": "ดูผลงาน",
+      "imageAlt": "ซอฟต์แวร์บริหารธุรกิจบนเดสก์ท็อป แท็บเล็ต และมือถือ",
+      "stat1Value": "15+",
+      "stat1Label": "ปีประสบการณ์",
+      "stat2Value": "500+",
+      "stat2Label": "จุดให้บริการ",
+      "stat3Value": "24/7",
+      "stat3Label": "ซัพพอร์ต"
+    },
+    "footer": {
+      "tagline": "เอเจนซี่ดิจิทัลที่มอบประสบการณ์เว็บ ซอฟต์แวร์ และโซลูชันสร้างสรรค์ระดับแนวหน้า",
+      "quickLinks": "ลิงก์ด่วน",
+      "servicesTitle": "บริการ",
+      "contactTitle": "ติดต่อ",
+      "copyright": "© {{year}} TRS สงวนลิขสิทธิ์",
+      "privacy": "นโยบายความเป็นส่วนตัว",
+      "terms": "ข้อกำหนดการใช้งาน",
+      "serviceWebDev": "พัฒนาเว็บไซต์",
+      "serviceUiUx": "ออกแบบ UI/UX",
+      "serviceMobile": "แอปมือถือ",
+      "serviceCloud": "โซลูชันคลาวด์"
+    }
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "general": "ทั่วไป",
+    "appearance": "ลักษณะที่ปรากฏ",
+    "notifications": "การแจ้งเตือน",
+    "security": "ความปลอดภัย",
+    "languageSettings": "การตั้งค่าภาษา",
+    "selectLanguage": "เลือกภาษา",
+    "theme": "ธีม",
+    "lightMode": "โหมดสว่าง",
+    "darkMode": "โหมดมืด"
+  }
+}

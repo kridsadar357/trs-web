@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env
+.env.*
+exports/*.sql
+exports/*.zip
+*.md
+!README.md
+coverage
+npm-debug.log*

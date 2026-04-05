@@ -1,0 +1,41 @@
+# Example stack for VPS. Copy exports/trs_web_full_dump.sql and public_media.zip to the server first.
+#
+# 1. docker compose up -d db
+# 2. docker exec -i trs-mysql mysql -uroot -pYOUR_ROOT_PASSWORD trs_web < trs_web_full_dump.sql
+# 3. unzip public_media into a volume or bind-mount at ./data/public (see app volumes)
+# 4. Set .env.production or environment below, then: docker compose up -d app
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: trs-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change-me}
+      MYSQL_DATABASE: trs_web
+      MYSQL_USER: ${MYSQL_USER:-trs}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-trs-secret}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: trs-web
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-mysql://trs:trs-secret@db:3306/trs_web}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-set-a-long-random-secret}
+    # Optional: persist user uploads from host
+    # volumes:
+    #   - ./data/public/uploads:/app/public/uploads
+    #   - ./data/public/hero:/app/public/hero
+
+volumes:
+  mysql_data:
