@@ -33,8 +33,11 @@ echo.
 echo === Deploying to %VPS_USER%@%VPS_HOST%:%VPS_DIR% ===
 echo.
 
+REM Copy public + .next/static into every standalone layout Next may emit.
+REM PM2 cwd is often .next/standalone/trs-web (see ecosystem.config.cjs); copying only to
+REM .next/standalone/public breaks /site.webmanifest, /logo.svg, etc. (404 on localhost:3000).
 REM Use -o BatchMode=yes only when SSH key auth works (no password prompt).
-ssh %VPS_USER%@%VPS_HOST% "cd %VPS_DIR% && git pull origin %GIT_BRANCH% && npm ci && npm exec prisma generate && npm run build && cp -r public .next/standalone/public && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/static && pm2 restart trs-next"
+ssh %VPS_USER%@%VPS_HOST% "cd %VPS_DIR% && git pull origin %GIT_BRANCH% && npm ci && npm exec prisma generate && npm run build && cp -r public .next/standalone/public && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/static && mkdir -p .next/standalone/trs-web/.next && cp -r public .next/standalone/trs-web/public && cp -r .next/static .next/standalone/trs-web/.next/static && pm2 restart trs-next"
 
 if errorlevel 1 (
   echo.

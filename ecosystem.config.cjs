@@ -4,6 +4,9 @@
  *   pm2 delete trs-next 2>/dev/null
  *   pm2 start ecosystem.config.cjs
  *   pm2 save
+ *
+ * Deploy must copy `public` next to the same `server.js` PM2 uses (flat or nested under
+ * `trs-web/`). See `scripts/deploy-vps.bat`.
  */
 const fs = require("fs");
 const path = require("path");
