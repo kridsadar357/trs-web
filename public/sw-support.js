@@ -25,8 +25,8 @@ self.addEventListener("push", (event) => {
     body,
     tag,
     renotify: true,
-    icon: data.icon || "/android-chrome-192x192.png",
-    badge: data.badge || "/android-chrome-192x192.png",
+    icon: data.icon || "/chat-app/icon",
+    badge: data.badge || "/chat-app/icon",
     data: { url },
     vibrate: [120, 80, 120],
   });

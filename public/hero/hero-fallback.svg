@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="trsHero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="55%" stop-color="#134e4a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#trsHero)" />
+  <circle cx="78%" cy="22%" r="18%" fill="rgba(45,212,191,0.12)" />
+  <circle cx="18%" cy="72%" r="22%" fill="rgba(59,130,246,0.08)" />
+</svg>

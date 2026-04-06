@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export default function ChatAppLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-      <div className="relative min-h-[100dvh] overflow-x-hidden bg-zinc-950 text-zinc-100 antialiased">
+      <div className="relative flex h-[100dvh] max-h-[100dvh] min-h-0 flex-col overflow-x-hidden overflow-y-hidden bg-zinc-950 text-zinc-100 antialiased">
         <div
           className="pointer-events-none fixed inset-0 -z-10"
           aria-hidden
@@ -40,7 +40,7 @@ export default function ChatAppLayout({ children }: { children: React.ReactNode 
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_100%_50%,rgba(59,130,246,0.08),transparent_50%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(9,9,11,0.3),rgb(9,9,11))]" />
         </div>
-        <div className="relative z-0 min-h-[100dvh]">
+        <div className="relative z-0 flex min-h-0 flex-1 flex-col">
           <SupportPwaExperience>{children}</SupportPwaExperience>
         </div>
       </div>

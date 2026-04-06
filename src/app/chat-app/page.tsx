@@ -18,7 +18,7 @@ export default function ChatAppHome() {
   }, [router]);
 
   return (
-    <SupportShell className="items-center justify-center">
+    <SupportShell viewportLock={false} className="items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <div className="h-9 w-9 animate-spin rounded-full border-2 border-emerald-500/30 border-t-emerald-400" />
         <p className="text-xs text-zinc-500">กำลังโหลด…</p>

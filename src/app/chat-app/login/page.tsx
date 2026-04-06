@@ -42,7 +42,7 @@ export default function ChatSupportLoginPage() {
   }
 
   return (
-    <SupportShell className="justify-center px-4 py-8">
+    <SupportShell viewportLock={false} className="justify-center px-4 py-8">
       <div className="mx-auto w-full max-w-sm space-y-8">
         <div className="flex flex-col items-center text-center">
           <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/10 ring-1 ring-white/10">

@@ -135,14 +135,20 @@ export function LiveChatWidget() {
       </button>
 
       {open ? (
-        <div className="fixed bottom-24 right-5 z-50 flex h-[min(72vh,34rem)] w-[min(100vw-2.5rem,22rem)] flex-col overflow-hidden rounded-xl border bg-background shadow-2xl">
-          <div className="border-b px-4 py-3 shrink-0">
+        <div
+          className="fixed bottom-24 right-5 z-50 flex w-[min(100vw-2.5rem,22rem)] flex-col overflow-hidden rounded-xl border border-border bg-background shadow-2xl"
+          style={{
+            height: "min(34rem, calc(100dvh - 6.5rem))",
+            maxHeight: "calc(100dvh - env(safe-area-inset-bottom, 0px) - 5.5rem)",
+          }}
+        >
+          <div className="shrink-0 border-b bg-background px-4 py-3">
             <p className="font-semibold text-sm">แชทกับเรา</p>
             <p className="text-xs text-muted-foreground">ตอบกลับโดยทีม TRS</p>
           </div>
 
           {!started ? (
-            <div className="p-4 space-y-3 overflow-y-auto">
+            <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-y-contain p-4 [-webkit-overflow-scrolling:touch]">
               <div className="space-y-1">
                 <Label htmlFor="lc-name">ชื่อ (ไม่บังคับ)</Label>
                 <Input
@@ -168,7 +174,7 @@ export function LiveChatWidget() {
             </div>
           ) : (
             <>
-              <div className="min-h-0 flex-1 overflow-y-auto p-3 space-y-2">
+              <div className="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-y-contain p-3 [-webkit-overflow-scrolling:touch]">
                 {statusNote ? (
                   <p className="text-center text-xs text-primary bg-primary/10 rounded-md py-2 px-2">{statusNote}</p>
                 ) : null}

@@ -186,7 +186,7 @@ export function SupportPwaExperience({ children }: { children: React.ReactNode }
   const showIosHint = isIosDevice() && !hasDeferredInstall;
 
   return (
-    <div className={cn(showPushBar && "pb-[5.5rem]")}>
+    <div className={cn("flex min-h-0 flex-1 flex-col overflow-hidden", showPushBar && "pb-[5.5rem]")}>
       {children}
 
       {showPushBar ? (

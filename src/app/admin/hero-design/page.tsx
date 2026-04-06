@@ -208,7 +208,7 @@ export default function AdminHeroDesignPage() {
             <Input
               value={hero.homeHeroImage}
               onChange={(e) => update({ homeHeroImage: e.target.value })}
-              placeholder="/hero/pos-modern-hero.png"
+              placeholder="/hero/hero-fallback.svg"
             />
           </div>
           <div className="space-y-2">

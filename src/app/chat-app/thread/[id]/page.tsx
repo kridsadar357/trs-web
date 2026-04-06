@@ -232,7 +232,7 @@ export default function SupportThreadPage() {
 
   return (
     <SupportShell>
-      <header className="sticky top-0 z-20 shrink-0 border-b border-white/[0.08] bg-zinc-950/85 backdrop-blur-xl">
+      <header className="z-20 shrink-0 border-b border-white/[0.08] bg-zinc-950/95 backdrop-blur-xl">
         <div className="flex items-start gap-2 px-2 py-2.5">
           <Link
             href={inboxHref}
@@ -307,7 +307,7 @@ export default function SupportThreadPage() {
           {banner}
         </div>
       ) : null}
-      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-3">
+      <div className="min-h-0 flex-1 touch-pan-y space-y-3 overflow-y-auto overscroll-y-contain p-3 [-webkit-overflow-scrolling:touch]">
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center px-4 py-16 text-center">
             <p className="text-sm text-zinc-500">ยังไม่มีข้อความในห้องนี้</p>
@@ -322,7 +322,7 @@ export default function SupportThreadPage() {
         variant="support"
         quickReplies={QUICK_REPLIES}
         onSend={onSend}
-        className="shrink-0 border-t border-white/8 bg-zinc-950/95"
+        className="z-10 shrink-0 border-t border-white/8 bg-zinc-950"
       />
     </SupportShell>
   );

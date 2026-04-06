@@ -122,7 +122,7 @@ The **TRS Support Chat** lives under `src/app/chat-app` (on the main site it is 
 | **Env** | `CHAT_SUPPORT_JWT_SECRET` — long random string (defaults to `NEXTAUTH_SECRET` if unset; a dedicated secret is better). |
 | **Web Push** | Optional: `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `VAPID_SUBJECT` (e.g. `mailto:support@yourdomain.com`). Generate keys: `npx web-push generate-vapid-keys`. Without these, the PWA still installs; agents simply will not receive **system push** for new visitor messages. **HTTPS** is required in production for push and for a smooth install flow. |
 | **Scaling** | Chat SSE uses in-memory pub/sub (`src/lib/chat-bus.ts`). Use **one Node instance** (or one PM2 fork) for real-time until you replace the bus with Redis pub/sub. |
-| **PWA** | `src/app/chat-app/manifest.ts` + generated **`/chat-app/icon`** / **`/chat-app/apple-icon`**; static `public/sw-support.js` handles push notifications. Add **`public/android-chrome-192x192.png`** (and 512) for richer launcher icons if you have branded assets. |
+| **PWA** | `src/app/chat-app/manifest.ts` + generated **`/chat-app/icon`**; static `public/sw-support.js` uses that icon for notifications. Main site favicons: **`/icon`** and **`/apple-icon`** from `src/app/icon.tsx` / `apple-icon.tsx`. |
 
 Example **nginx** fragment for SSE (adjust upstream):
 

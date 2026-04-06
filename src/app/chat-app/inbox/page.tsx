@@ -127,14 +127,16 @@ export default function ChatInboxPage() {
           <div className="h-5 w-32 animate-pulse rounded bg-zinc-800" />
           <div className="h-9 w-16 animate-pulse rounded-md bg-zinc-800" />
         </header>
-        <InboxSkeleton />
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain [-webkit-overflow-scrolling:touch]">
+          <InboxSkeleton />
+        </div>
       </SupportShell>
     );
   }
 
   return (
     <SupportShell>
-      <header className="sticky top-0 z-20 shrink-0 border-b border-white/[0.08] bg-zinc-950/80 px-3 py-3 backdrop-blur-xl">
+      <header className="z-20 shrink-0 border-b border-white/[0.08] bg-zinc-950/95 px-3 py-3 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-2 px-1">
           <div>
             <h1 className="text-base font-semibold tracking-tight text-white">แชทลูกค้า</h1>
@@ -195,7 +197,7 @@ export default function ChatInboxPage() {
         </div>
       </header>
 
-      <ul className="min-h-0 flex-1 divide-y divide-white/[0.06] overflow-y-auto">
+      <ul className="min-h-0 flex-1 divide-y divide-white/[0.06] overflow-y-auto overscroll-y-contain [-webkit-overflow-scrolling:touch]">
         {filtered.length === 0 ? (
           <li className="px-6 py-16 text-center">
             <p className="text-sm text-zinc-400">
@@ -249,7 +251,7 @@ export default function ChatInboxPage() {
       </ul>
 
       {me ? (
-        <footer className="shrink-0 border-t border-white/[0.08] bg-zinc-950/90 px-4 py-3 backdrop-blur-md">
+        <footer className="z-10 shrink-0 border-t border-white/[0.08] bg-zinc-950 px-4 py-3 backdrop-blur-md">
           <p className="text-center text-[11px] text-zinc-500">
             ลงชื่อเข้าใช้เป็น{" "}
             <span className="font-medium text-zinc-300">{me.displayName}</span>
