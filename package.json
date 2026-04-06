@@ -13,7 +13,9 @@
     "db:push": "npx prisma db push",
     "db:generate": "npx prisma generate",
     "db:studio": "npx prisma studio",
-    "db:seed": "npx tsx prisma/seed.ts"
+    "db:seed": "npx tsx prisma/seed.ts",
+    "commit:gen": "node scripts/generate-commit.js",
+    "commit:apply": "node scripts/generate-commit.js --apply"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

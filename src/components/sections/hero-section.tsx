@@ -67,7 +67,7 @@ export function HeroSection() {
   }, [parsedStats, t]);
 
   const badge = pickSetting(settings, "homeHeroBadge", t("site.heroDefaults.badge"));
-  const heroImage = pickSetting(settings, "homeHeroImage", "/hero/hero-fallback.svg");
+  const heroImage = pickSetting(settings, "homeHeroImage", "/hero/pos-modern-hero.png");
   const titleBefore = pickSetting(settings, "homeHeroTitleBefore", t("site.heroDefaults.titleBefore"));
   const titleHighlight = pickSetting(settings, "homeHeroTitleHighlight", t("site.heroDefaults.titleHighlight"));
   const titleAfter = pickSetting(settings, "homeHeroTitleAfter", t("site.heroDefaults.titleAfter"));

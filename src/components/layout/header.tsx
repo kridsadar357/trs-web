@@ -127,11 +127,10 @@ export function Header() {
             aria-label="TRS NextGen — หน้าแรก"
           >
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="TRS NextGen"
-              width={220}
-              height={52}
-              unoptimized
+              width={320}
+              height={72}
               className="h-10 w-auto max-w-[min(78vw,16rem)] shrink-0 object-contain object-left sm:h-11 sm:max-w-[18rem] md:max-w-[20rem]"
               priority
             />
