@@ -107,6 +107,8 @@ From the repo root after `npm run build`:
 
 3. `pm2 start ecosystem.config.cjs` && `pm2 save`
 
+**Uploads (chat + admin):** Nginx’s default **`client_max_body_size`** is **1m** — larger images return **413** and look like “upload failed”. In your `server` (or `location /`) block set e.g. **`client_max_body_size 15m;`**. Prefer a persistent **`UPLOAD_DIR`** outside `.next` (see `.env.example`) so `cp -r public .next/standalone/public` does not delete `public/uploads` on each deploy. Do **not** point `location /uploads/` at an empty folder unless that folder is the same as **`UPLOAD_DIR`**; otherwise proxy **`/`** to Node and let the app serve `/uploads/*`.
+
 ## 7. Support chat PWA (`chats.*` subdomain)
 
 The **TRS Support Chat** lives under `src/app/chat-app` (on the main site it is mounted at `/chat-app/*`; on a host whose name starts with `chats.` the same routes appear at `/`, `/inbox`, `/thread/...` — see `src/lib/chat-app-routes.ts`).

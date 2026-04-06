@@ -67,7 +67,13 @@ export function ChatComposer({
     const res = await fetch("/api/upload", { method: "POST", body: fd });
     if (!res.ok) {
       const j = await res.json().catch(() => ({}));
-      throw new Error((j as { error?: string }).error || "อัปโหลดไม่สำเร็จ");
+      const msg = (j as { error?: string }).error || "อัปโหลดไม่สำเร็จ";
+      if (res.status === 413) {
+        throw new Error(
+          "ไฟล์ใหญ่เกินกำหนดของเซิร์ฟเวอร์ (nginx: ตั้ง client_max_body_size อย่างน้อย 10m; แอปรับสูงสุด 8MB)"
+        );
+      }
+      throw new Error(msg);
     }
     return (await res.json()) as { url: string; mime: string; originalName: string };
   }, []);
