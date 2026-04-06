@@ -17,12 +17,7 @@ function resolvedCode(i18n: { language: string; resolvedLanguage?: string }) {
   return base === "en" ? "en" : "th";
 }
 
-type LanguageSwitcherProps = {
-  /** Light controls on dark / glass nav (e.g. home hero) */
-  darkSurface?: boolean;
-};
-
-export default function LanguageSwitcher({ darkSurface = false }: LanguageSwitcherProps) {
+export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -56,23 +51,22 @@ export default function LanguageSwitcher({ darkSurface = false }: LanguageSwitch
         size="sm"
         className={cn(
           "h-9 gap-1.5 px-2.5 font-medium",
-          darkSurface
-            ? "border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
-            : "border-border bg-background/80 hover:bg-accent/50",
-          !darkSurface && open && "ring-2 ring-primary/30",
-          darkSurface && open && "ring-2 ring-white/25"
+          "border-zinc-900/25 bg-zinc-950/[0.04] text-zinc-900 shadow-sm",
+          "hover:bg-zinc-950/[0.10] hover:text-zinc-950",
+          "dark:border-white/25 dark:bg-white/10 dark:text-white dark:shadow-none",
+          "dark:hover:bg-white/15 dark:hover:text-white",
+          open ? "ring-2 ring-zinc-900/20 dark:ring-white/35" : ""
         )}
         onClick={() => setOpen(!open)}
         aria-label={t("common.language")}
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <Languages className={cn("h-4 w-4 shrink-0", darkSurface ? "text-white/70" : "text-muted-foreground")} />
-        <span className="tabular-nums">{currentLang.label}</span>
+        <Languages className="h-4 w-4 shrink-0 text-zinc-700 dark:text-white/85" />
+        <span className="tabular-nums font-semibold">{currentLang.label}</span>
         <ChevronDown
           className={cn(
-            "h-3.5 w-3.5 shrink-0 transition-transform",
-            darkSurface ? "text-white/70" : "text-muted-foreground",
+            "h-3.5 w-3.5 shrink-0 transition-transform text-zinc-600 dark:text-white/80",
             open && "rotate-180"
           )}
         />
@@ -81,7 +75,7 @@ export default function LanguageSwitcher({ darkSurface = false }: LanguageSwitch
       {open && (
         <div
           role="listbox"
-          className="absolute right-0 top-[calc(100%+6px)] z-[100] min-w-[160px] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md"
+          className="absolute right-0 top-[calc(100%+6px)] z-[200] min-w-[160px] overflow-hidden rounded-xl border border-zinc-200/90 bg-white/95 p-1 text-zinc-900 shadow-lg backdrop-blur-xl dark:border-white/15 dark:bg-zinc-950/95 dark:text-zinc-100 dark:shadow-2xl"
         >
           {languages.map((lang) => {
             const selected = active === lang.code;
@@ -93,19 +87,23 @@ export default function LanguageSwitcher({ darkSurface = false }: LanguageSwitch
                 aria-selected={selected}
                 onClick={() => switchLanguage(lang.code)}
                 className={cn(
-                  "flex w-full items-center gap-2 rounded-sm px-2 py-2 text-left text-sm transition-colors",
-                  selected ? "bg-primary/10 text-primary" : "hover:bg-accent"
+                  "flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm transition-colors",
+                  selected
+                    ? "bg-primary/12 text-primary dark:bg-white/10 dark:text-white"
+                    : "hover:bg-zinc-100 dark:hover:bg-white/10"
                 )}
               >
                 <span
                   className={cn(
                     "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold",
-                    selected ? "border-2 border-primary bg-primary/10" : "border border-border bg-muted/50"
+                    selected
+                      ? "border-2 border-primary bg-primary/10 dark:border-white/40 dark:bg-white/10"
+                      : "border border-zinc-200 bg-zinc-50 dark:border-white/20 dark:bg-white/5"
                   )}
                 >
                   {lang.label}
                 </span>
-                <span className="flex-1">{lang.fullLabel}</span>
+                <span className="flex-1 font-medium">{lang.fullLabel}</span>
                 {selected && <Check className="h-4 w-4 shrink-0" />}
               </button>
             );

@@ -13,7 +13,6 @@ import {
   Briefcase,
   FolderOpen,
   Users,
-  MessageSquare,
   Star,
   Mail,
   Settings,
@@ -22,10 +21,18 @@ import {
   Menu,
   X,
   ChevronRight,
+  Headphones,
 } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-const sidebarLinks = [
+type SidebarLink = {
+  href: string;
+  label: string;
+  icon: typeof LayoutDashboard;
+  requireAdmin?: boolean;
+};
+
+const sidebarLinkDefs: SidebarLink[] = [
   { href: "/admin", label: "แดชบอร์ด", icon: LayoutDashboard },
   { href: "/admin/pages", label: "หน้าเว็บไซต์", icon: FileText },
   { href: "/admin/hero-design", label: "Hero Design", icon: LayoutTemplate },
@@ -35,6 +42,7 @@ const sidebarLinks = [
   { href: "/admin/team", label: "ทีมงาน", icon: Users },
   { href: "/admin/testimonials", label: "รีวิวลูกค้า", icon: Star },
   { href: "/admin/contacts", label: "ข้อความติดต่อ", icon: Mail },
+  { href: "/admin/chat-agents", label: "แชทซัพพอร์ต", icon: Headphones, requireAdmin: true },
   { href: "/admin/settings", label: "ตั้งค่า", icon: Settings },
 ];
 
@@ -42,6 +50,11 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const role = (session?.user as { role?: string } | undefined)?.role;
+  const sidebarLinks = useMemo(
+    () => sidebarLinkDefs.filter((l) => !l.requireAdmin || role === "admin"),
+    [role]
+  );
 
   return (
     <div className="min-h-screen flex bg-muted/30">
@@ -104,7 +117,8 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
               {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
             <h2 className="font-medium text-sm hidden sm:block">
-              {sidebarLinks.find(l => l.href === pathname)?.label || "แดชบอร์ด"}
+              {sidebarLinks.find((l) => l.href === pathname || (l.href !== "/admin" && pathname.startsWith(l.href)))
+                ?.label || "แดชบอร์ด"}
             </h2>
           </div>
           <div className="flex items-center gap-2">

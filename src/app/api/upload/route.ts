@@ -3,6 +3,9 @@ import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 
+const MAX_BYTES = 8 * 1024 * 1024;
+const ALLOWED_EXT = /\.(jpe?g|png|gif|webp|pdf|doc|docx|xlsx?|txt|zip)$/i;
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -14,8 +17,14 @@ export async function POST(request: Request) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    if (buffer.length > MAX_BYTES) {
+      return NextResponse.json({ error: "File too large (max 8MB)" }, { status: 400 });
+    }
 
-    const ext = path.extname(file.name) || ".jpg";
+    const ext = path.extname(file.name) || ".bin";
+    if (!ALLOWED_EXT.test(ext)) {
+      return NextResponse.json({ error: "File type not allowed" }, { status: 400 });
+    }
     const filename = `${randomUUID()}${ext}`;
 
     const uploadDir = path.join(process.cwd(), "public", "uploads");
@@ -29,7 +38,12 @@ export async function POST(request: Request) {
 
     const url = `/uploads/${filename}`;
 
-    return NextResponse.json({ url, filename });
+    return NextResponse.json({
+      url,
+      filename,
+      mime: file.type || "application/octet-stream",
+      originalName: file.name.slice(0, 255),
+    });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });

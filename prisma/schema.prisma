@@ -193,3 +193,74 @@ model SiteSetting {
 
   @@map("sitesetting")
 }
+
+model SupportAgent {
+  id          String   @id @default(cuid())
+  username    String   @unique @db.VarChar(100)
+  password    String   @db.VarChar(255)
+  displayName String   @db.VarChar(255)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  threads           ChatThread[]
+  messages          ChatMessage[]
+  pushSubscriptions SupportPushSubscription[]
+
+  @@map("supportagent")
+}
+
+/// Web Push subscriptions for support PWA (one row per browser/device).
+model SupportPushSubscription {
+  id        String   @id @default(cuid())
+  agentId   String
+  agent     SupportAgent @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique @db.VarChar(768)
+  p256dh    String   @db.VarChar(255)
+  auth      String   @db.VarChar(255)
+  /// "" when installed from chats.* ; "/chat-app" when nested on main domain
+  pathBase  String   @default("/chat-app") @db.VarChar(64)
+  userAgent String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([agentId])
+  @@map("supportpushsubscription")
+}
+
+model ChatThread {
+  id              String   @id @default(cuid())
+  visitorKey      String   @db.VarChar(64)
+  visitorName     String?  @db.VarChar(255)
+  visitorEmail    String?  @db.VarChar(255)
+  status          String   @default("open") @db.VarChar(32)
+  assignedAgentId String?
+  assignedAgent   SupportAgent? @relation(fields: [assignedAgentId], references: [id], onDelete: SetNull)
+  lastMessageAt   DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  messages ChatMessage[]
+
+  @@index([visitorKey])
+  @@index([status])
+  @@map("chatthread")
+}
+
+model ChatMessage {
+  id              String   @id @default(cuid())
+  threadId        String
+  thread          ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  sender          String   @db.VarChar(16)
+  agentId         String?
+  agent           SupportAgent? @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  body            String   @db.Text
+  attachmentUrl   String?  @db.VarChar(500)
+  attachmentMime  String?  @db.VarChar(128)
+  attachmentName  String?  @db.VarChar(255)
+  meta            Json?
+  createdAt       DateTime @default(now())
+
+  @@index([threadId])
+  @@map("chatmessage")
+}
