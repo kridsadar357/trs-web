@@ -134,3 +134,99 @@ location /api/chat-support/subscribe {
     proxy_read_timeout 86400s;
 }
 ```
+
+## 8. Full flow after DB is ready (PM2 on VPS, e.g. `~/web/trs-web`)
+
+Use this when you have a **good** `trs_web_full_dump.sql` (ideally from local after `npx prisma db push`) and want the site + chat working end-to-end.
+
+### A. On your PC (before `scp`)
+
+1. Sync schema locally: `npx prisma db push` (and fix any errors).
+2. Export DB + media: `powershell -ExecutionPolicy Bypass -File scripts\export-for-vps.ps1`
+3. Copy to the server, e.g.  
+   `scp exports/trs_web_full_dump.sql exports/public_media.zip root@VPS:~/web/trs-web/`
+
+### B. On the VPS — database
+
+```bash
+# Backup current DB (optional)
+mysqldump -u root -p trs_web > ~/trs_web_backup_$(date +%F).sql
+
+mysql -u root -p -e "DROP DATABASE IF EXISTS trs_web; CREATE DATABASE trs_web CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p trs_web < ~/web/trs-web/trs_web_full_dump.sql
+```
+
+Use the same MySQL user as in `DATABASE_URL` if you do not use `root`.
+
+### C. On the VPS — media under `public/`
+
+```bash
+cd ~/web/trs-web
+unzip -o public_media.zip -d public_tmp
+mkdir -p public
+mv public_tmp/hero public/ 2>/dev/null || true
+mv public_tmp/uploads public/ 2>/dev/null || true
+rm -rf public_tmp
+```
+
+### D. On the VPS — app code and build
+
+If `git pull` complains about **untracked** `exports/trs_export.tgz` or `trs_export.tgz`, move them out of the repo (`mkdir -p ~/backup-trs && mv … ~/backup-trs/`), then pull.
+
+```bash
+cd ~/web/trs-web
+git pull origin main
+npm ci
+```
+
+**Prisma CLI:** use the project’s version (Prisma **6**), not bare `npx prisma` (which can install Prisma **7** and break `schema.prisma`):
+
+```bash
+npm exec prisma generate
+# Only if the dump might be older than schema.prisma; skip if dump is fresh from local push:
+# npm exec prisma db push
+npm run build
+```
+
+### E. Standalone assets + PM2
+
+Flat standalone (when `pm2` shows `cwd` = `.next/standalone`):
+
+```bash
+cd ~/web/trs-web
+cp -r public .next/standalone/public
+mkdir -p .next/standalone/.next
+cp -r .next/static .next/standalone/.next/static
+pm2 restart trs-next
+```
+
+Nested standalone (when `server.js` is under `.next/standalone/trs-web/`):
+
+```bash
+cp -r public .next/standalone/trs-web/public
+mkdir -p .next/standalone/trs-web/.next
+cp -r .next/static .next/standalone/trs-web/.next/static
+pm2 restart trs-next
+```
+
+### F. Smoke checks
+
+```bash
+curl -sS -o /dev/null -w "%{http_code}\n" http://127.0.0.1:3000/api/health
+curl -sS -o /dev/null -w "%{http_code}\n" http://127.0.0.1:3000/chat-app/login
+# After “เริ่มแชท”, POST /api/chat/thread should not be 500 if chat tables exist
+```
+
+Then test in the browser (hard refresh or private window).
+
+---
+
+## 9. MariaDB / MySQL: `Duplicate key name '…_key'` on `prisma db push`
+
+Older databases often have **PascalCase** Prisma index names (`User_email_key`, `Page_slug_key`). This project’s Prisma **6** + `@@map("lowercase")` expects **lowercase** names (`user_email_key`, `page_slug_key`). On MariaDB, adding the lowercase name can conflict with the old name (**1061** / Prisma **Duplicate key name**).
+
+**Preferred fix:** export a full dump from **local** after `npx prisma db push` succeeds, then **replace** the VPS database (section **8.B**) so you do not rename indexes by hand.
+
+**Manual fix pattern:** `SHOW CREATE TABLE \`tablename\`\G` → `ALTER TABLE … DROP INDEX \`OldPascalCase_key\`` → `ALTER TABLE … ADD UNIQUE KEY \`lowercase_key\` (…)` → `npm exec prisma db push` again. Repeat for each table Prisma names until push completes.
+
+**Account `(provider, providerAccountId)`:** if push loops on `account_provider_providerAccountId_key`, ensure there is **exactly one** unique on those columns; drop any duplicate or wrongly named unique using `SHOW CREATE TABLE \`account\`\G`, then run `npm exec prisma db push` again.
