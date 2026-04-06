@@ -11,6 +11,7 @@ import type { ChatMessageDTO } from "@/lib/chat-message-dto";
 import { ChatMessageBubble } from "@/components/chat/chat-message-bubble";
 import { ChatComposer, type ChatSendPayload } from "@/components/chat/chat-composer";
 import { SupportShell } from "@/components/chat-app/support-shell";
+import { syncSupportAppBadge } from "@/lib/support-app-badge-client";
 import { Button } from "@/components/ui/button";
 
 const QUICK_REPLIES = [
@@ -72,6 +73,22 @@ export default function SupportThreadPage() {
   useEffect(() => {
     void loadMessages();
   }, [loadMessages]);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function pollBadge() {
+      const r = await fetch("/api/chat-support/pending-count", { credentials: "include" });
+      if (!r.ok || cancelled) return;
+      const j = (await r.json()) as { count?: number };
+      if (typeof j.count === "number") syncSupportAppBadge(j.count);
+    }
+    void pollBadge();
+    const t = setInterval(() => void pollBadge(), 12000);
+    return () => {
+      cancelled = true;
+      clearInterval(t);
+    };
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -163,6 +180,12 @@ export default function SupportThreadPage() {
       if (res.ok) {
         const msg = (await res.json()) as ChatMessageDTO;
         mergeMessage(msg);
+        void fetch("/api/chat-support/pending-count", { credentials: "include" })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((j: { count?: number } | null) => {
+            if (j && typeof j.count === "number") syncSupportAppBadge(j.count);
+          })
+          .catch(() => {});
       }
     },
     [threadId, router, mergeMessage]

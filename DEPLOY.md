@@ -229,4 +229,19 @@ Older databases often have **PascalCase** Prisma index names (`User_email_key`, 
 
 **Manual fix pattern:** `SHOW CREATE TABLE \`tablename\`\G` → `ALTER TABLE … DROP INDEX \`OldPascalCase_key\`` → `ALTER TABLE … ADD UNIQUE KEY \`lowercase_key\` (…)` → `npm exec prisma db push` again. Repeat for each table Prisma names until push completes.
 
-**Account `(provider, providerAccountId)`:** if push loops on `account_provider_providerAccountId_key`, ensure there is **exactly one** unique on those columns; drop any duplicate or wrongly named unique using `SHOW CREATE TABLE \`account\`\G`, then run `npm exec prisma db push` again.
+**`account` + `account_provider_providerAccountId_key` (RedefineIndex / 1061):** Prisma is trying to (re)create the composite unique on `(provider, providerAccountId)` but MySQL/MariaDB already has an index with that **name** (or a **case-variant** that your server treats as the same name). Inspect and leave **exactly one** unique on those columns named **`account_provider_providerAccountId_key`**.
+
+```bash
+mysql -u root -p trs_web -e "SHOW CREATE TABLE \`account\`\G"
+mysql -u root -p trs_web -e "SHOW INDEX FROM \`account\`;"
+```
+
+- If you see **`Account_provider_providerAccountId_key`** (PascalCase) **and** **`account_provider_providerAccountId_key`**, drop the PascalCase one first:  
+  `ALTER TABLE \`account\` DROP INDEX \`Account_provider_providerAccountId_key\`;`
+- If the error persists, the safe sequence is: drop **every** unique that covers only `provider` + `providerAccountId` (copy the exact `Key_name` from `SHOW INDEX`), then add the one Prisma expects:
+
+```sql
+ALTER TABLE `account` ADD UNIQUE KEY `account_provider_providerAccountId_key` (`provider`,`providerAccountId`);
+```
+
+(Only if no duplicate `(provider, providerAccountId)` rows exist.) Then `npm exec prisma db push` again.

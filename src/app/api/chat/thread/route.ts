@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -48,6 +49,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ threadId: thread.id, status: thread.status }, { status: 201 });
   } catch (e) {
     console.error("POST /api/chat/thread", e);
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      const body: Record<string, unknown> = {
+        error: "Failed to start chat",
+        prismaCode: e.code,
+      };
+      const meta = e.meta as Record<string, unknown> | undefined;
+      if (meta?.table != null) body.table = meta.table;
+      if (meta?.modelName != null) body.modelName = meta.modelName;
+      if (process.env.NODE_ENV === "development") body.meta = meta;
+      return NextResponse.json(body, { status: 500 });
+    }
     return NextResponse.json({ error: "Failed to start chat" }, { status: 500 });
   }
 }

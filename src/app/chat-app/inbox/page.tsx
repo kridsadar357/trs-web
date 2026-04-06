@@ -10,6 +10,7 @@ import { formatRelativeTh } from "@/lib/format-relative-th";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SupportShell } from "@/components/chat-app/support-shell";
+import { syncSupportAppBadge } from "@/lib/support-app-badge-client";
 import { cn } from "@/lib/utils";
 
 type Row = {
@@ -89,14 +90,17 @@ export default function ChatInboxPage() {
 
   useEffect(() => {
     fetch("/api/chat-support/me", { credentials: "include" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        if (j?.displayName) setMe({ displayName: j.displayName, username: j.username });
+      .then((r) => r.json().catch(() => null))
+      .then((j: { authenticated?: boolean; displayName?: string; username?: string } | null) => {
+        if (j?.authenticated && j.displayName) {
+          setMe({ displayName: j.displayName, username: j.username ?? "" });
+        }
       })
       .catch(() => {});
   }, []);
 
   async function logout() {
+    syncSupportAppBadge(0);
     await fetch("/api/chat-support/logout", { method: "POST", credentials: "include" });
     router.replace(chatAppPath("/login"));
   }
@@ -110,6 +114,11 @@ export default function ChatInboxPage() {
   }, [rows, filter]);
 
   const pendingCount = useMemo(() => rows.filter((r) => r.needsReply).length, [rows]);
+
+  useEffect(() => {
+    if (loading) return;
+    syncSupportAppBadge(pendingCount);
+  }, [pendingCount, loading]);
 
   if (loading) {
     return (

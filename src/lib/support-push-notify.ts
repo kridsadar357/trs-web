@@ -1,5 +1,6 @@
 import webpush from "web-push";
 import { prisma } from "@/lib/prisma";
+import { getPendingReplyCountForAgent } from "@/lib/support-pending-reply-count";
 
 function openUrlForSub(pathBase: string, threadId: string): string {
   const base = pathBase.trim();
@@ -43,9 +44,18 @@ export async function notifySupportAgentsNewVisitorMessage(params: {
 
   const subs = await prisma.supportPushSubscription.findMany({
     where,
-    select: { id: true, endpoint: true, p256dh: true, auth: true, pathBase: true },
+    select: { id: true, agentId: true, endpoint: true, p256dh: true, auth: true, pathBase: true },
   });
   if (subs.length === 0) return;
+
+  const agentIds = [...new Set(subs.map((s) => s.agentId))];
+  const badgeByAgent = new Map<string, number>();
+  await Promise.all(
+    agentIds.map(async (aid) => {
+      const n = await getPendingReplyCountForAgent(aid);
+      badgeByAgent.set(aid, n);
+    })
+  );
 
   const title = "ข้อความใหม่จากลูกค้า";
   const body = `${visitorLabel}: ${preview.slice(0, 160)}${preview.length > 160 ? "…" : ""}`;
@@ -53,12 +63,14 @@ export async function notifySupportAgentsNewVisitorMessage(params: {
   await Promise.all(
     subs.map(async (s) => {
       const url = openUrlForSub(s.pathBase, threadId);
+      const appBadgeCount = badgeByAgent.get(s.agentId) ?? 0;
       const payload = JSON.stringify({
         title,
         body,
         tag: `thread-${threadId}`,
         url,
         threadId,
+        appBadgeCount,
       });
       try {
         await webpush.sendNotification(

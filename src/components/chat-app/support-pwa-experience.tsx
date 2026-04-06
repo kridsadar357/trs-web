@@ -50,17 +50,15 @@ export function SupportPwaExperience({ children }: { children: React.ReactNode }
   const deferredRef = useRef<{ prompt: () => Promise<void> } | null>(null);
 
   const vapidConfigured = Boolean(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY);
-  const showPushBar =
-    authenticated &&
-    vapidConfigured &&
-    !isStandalonePwa() &&
-    pathnameIsInbox(pathname);
+  /** Offer push on inbox in both browser and installed PWA (previously standalone hid this bar). */
+  const showPushBar = authenticated && vapidConfigured && pathnameIsInbox(pathname);
 
   useEffect(() => {
     let cancelled = false;
     fetch("/api/chat-support/me", { credentials: "include" })
-      .then((r) => {
-        if (!cancelled) setAuthenticated(r.ok);
+      .then(async (r) => {
+        const j = (await r.json().catch(() => ({}))) as { authenticated?: boolean };
+        if (!cancelled) setAuthenticated(j.authenticated === true);
       })
       .catch(() => {
         if (!cancelled) setAuthenticated(false);

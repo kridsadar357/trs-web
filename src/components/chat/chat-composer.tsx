@@ -213,10 +213,10 @@ export function ChatComposer({
       ) : null}
 
       {menuOpen && !quoteOpen ? (
-        <div className="absolute bottom-full left-0 mb-1 z-20 w-48 rounded-xl border border-white/10 bg-zinc-900/95 py-1 shadow-xl backdrop-blur-md">
+        <div className="absolute bottom-full left-0 mb-1 z-20 w-48 rounded-xl border border-border bg-popover py-1 text-popover-foreground shadow-lg">
           <button
             type="button"
-            className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-white/5"
+            className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-muted"
             onClick={() => {
               fileRef.current?.click();
             }}
@@ -227,7 +227,7 @@ export function ChatComposer({
           {!isSupport ? (
             <button
               type="button"
-              className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-white/5"
+              className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-muted"
               onClick={() => void openQuotation()}
             >
               <ClipboardList className="h-4 w-4 shrink-0" />

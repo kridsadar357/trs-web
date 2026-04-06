@@ -25,7 +25,7 @@ export function ChatMessageBubble({ m, perspective }: { m: ChatMessageDTO; persp
             ? cn(
                 "rounded-2xl ring-1 ring-inset",
                 mine
-                  ? "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white ring-white/10"
+                  ? "bg-zinc-700/95 text-zinc-100 ring-emerald-500/25"
                   : "bg-zinc-800/90 text-zinc-100 ring-white/5"
               )
             : cn(
@@ -56,7 +56,13 @@ export function ChatMessageBubble({ m, perspective }: { m: ChatMessageDTO; persp
             download={m.attachmentName || true}
             className={cn(
               "text-xs underline underline-offset-2 block mb-1.5 break-all",
-              mine ? "text-primary-foreground/90" : "text-primary"
+              perspective === "support"
+                ? mine
+                  ? "text-emerald-200/90"
+                  : "text-sky-400/95"
+                : mine
+                  ? "text-primary-foreground/90"
+                  : "text-primary"
             )}
           >
             📎 {m.attachmentName || "ดาวน์โหลดไฟล์"}
@@ -66,7 +72,13 @@ export function ChatMessageBubble({ m, perspective }: { m: ChatMessageDTO; persp
         <p
           className={cn(
             "text-[10px] mt-1 opacity-80",
-            mine ? "text-primary-foreground/80" : "text-muted-foreground"
+            perspective === "support"
+              ? mine
+                ? "text-zinc-300/85"
+                : "text-zinc-500"
+              : mine
+                ? "text-primary-foreground/80"
+                : "text-muted-foreground"
           )}
         >
           {new Date(m.createdAt).toLocaleTimeString("th-TH", { hour: "2-digit", minute: "2-digit" })}

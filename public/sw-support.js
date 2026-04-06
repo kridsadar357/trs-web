@@ -19,18 +19,33 @@ self.addEventListener("push", (event) => {
   const body = data.body || "มีข้อความใหม่";
   const url = data.url || "/";
   const tag = data.tag || "trs-support";
+  const reg = self.registration;
 
-  event.waitUntil(
-    self.registration.showNotification(title, {
-      body,
-      tag,
-      renotify: true,
-      icon: data.icon || "/android-chrome-192x192.png",
-      badge: data.badge || "/android-chrome-192x192.png",
-      data: { url },
-      vibrate: [120, 80, 120],
-    })
-  );
+  const show = reg.showNotification(title, {
+    body,
+    tag,
+    renotify: true,
+    icon: data.icon || "/android-chrome-192x192.png",
+    badge: data.badge || "/android-chrome-192x192.png",
+    data: { url },
+    vibrate: [120, 80, 120],
+  });
+
+  /** Home-screen icon badge (Chrome/Edge/Android; not Safari). */
+  let badgeTask = Promise.resolve();
+  const n = data.appBadgeCount;
+  if (typeof n === "number" && n >= 0) {
+    if (reg.setAppBadge) {
+      badgeTask =
+        n === 0 && reg.clearAppBadge
+          ? reg.clearAppBadge()
+          : n === 0
+            ? reg.setAppBadge(0)
+            : reg.setAppBadge(n);
+    }
+  }
+
+  event.waitUntil(Promise.all([show, badgeTask]).catch(() => {}));
 });
 
 self.addEventListener("notificationclick", (event) => {

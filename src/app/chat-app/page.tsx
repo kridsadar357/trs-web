@@ -10,9 +10,9 @@ export default function ChatAppHome() {
 
   useEffect(() => {
     fetch("/api/chat-support/me", { credentials: "include" })
-      .then((r) => {
-        if (r.ok) router.replace(chatAppPath("/inbox"));
-        else router.replace(chatAppPath("/login"));
+      .then(async (r) => {
+        const j = (await r.json().catch(() => ({}))) as { authenticated?: boolean };
+        router.replace(j.authenticated ? chatAppPath("/inbox") : chatAppPath("/login"));
       })
       .catch(() => router.replace(chatAppPath("/login")));
   }, [router]);
