@@ -1,4 +1,5 @@
 import type { Prisma } from "@prisma/client";
+import { normalizePortfolioSlugForStorage } from "@/lib/portfolio-slug";
 
 function normalizeTechnologies(raw: unknown): string[] | undefined {
   if (raw == null) return undefined;
@@ -47,7 +48,8 @@ export function sanitizePortfolioBody(raw: unknown): Prisma.PortfolioItemUncheck
   const b = raw as Record<string, unknown>;
 
   const title = typeof b.title === "string" ? b.title.trim() : "";
-  const slug = typeof b.slug === "string" ? b.slug.trim() : "";
+  const slug =
+    typeof b.slug === "string" ? normalizePortfolioSlugForStorage(b.slug) : "";
   const description = typeof b.description === "string" ? b.description : "";
   if (!title) throw new Error("Title is required");
   if (!slug) throw new Error("Slug is required");

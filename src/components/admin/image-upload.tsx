@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Upload, X, ImageIcon, Plus } from "lucide-react";
+import { X, ImageIcon, Plus } from "lucide-react";
 import Image from "next/image";
 
 interface ImageUploadProps {
@@ -147,23 +147,42 @@ interface GalleryUploadProps {
 
 export function GalleryUpload({ value, onChange }: GalleryUploadProps) {
   const [uploading, setUploading] = useState(false);
+  const valueRef = useRef(value);
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
 
-  const uploadFile = useCallback(async (file: File) => {
-    setUploading(true);
+  const uploadOne = useCallback(async (file: File): Promise<string | null> => {
     const formData = new FormData();
     formData.append("file", file);
-    try {
-      const res = await fetch("/api/upload", { method: "POST", body: formData });
-      const data = await res.json();
-      if (data.url) {
-        onChange([...value, data.url]);
+    const res = await fetch("/api/upload", { method: "POST", body: formData });
+    const data = await res.json();
+    return data.url ?? null;
+  }, []);
+
+  const uploadFiles = useCallback(
+    async (files: File[]) => {
+      const images = files.filter((f) => f.type.startsWith("image/"));
+      if (images.length === 0) return;
+      setUploading(true);
+      try {
+        let next = [...valueRef.current];
+        for (const file of images) {
+          const url = await uploadOne(file);
+          if (url) {
+            next = [...next, url];
+            valueRef.current = next;
+            onChange(next);
+          }
+        }
+      } catch (err) {
+        console.error("Upload failed:", err);
+      } finally {
+        setUploading(false);
       }
-    } catch (err) {
-      console.error("Upload failed:", err);
-    } finally {
-      setUploading(false);
-    }
-  }, [value, onChange]);
+    },
+    [onChange, uploadOne]
+  );
 
   const removeImage = (index: number) => {
     onChange(value.filter((_, i) => i !== index));
@@ -171,9 +190,18 @@ export function GalleryUpload({ value, onChange }: GalleryUploadProps) {
 
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+      <div
+        className="grid grid-cols-3 sm:grid-cols-4 gap-2"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          e.preventDefault();
+          if (e.dataTransfer.files?.length) {
+            uploadFiles(Array.from(e.dataTransfer.files));
+          }
+        }}
+      >
         {value.map((url, i) => (
-          <div key={i} className="relative group rounded-lg overflow-hidden border bg-muted/20 aspect-square">
+          <div key={`${url}-${i}`} className="relative group rounded-lg overflow-hidden border bg-muted/20 aspect-square">
             <Image src={url} alt={`Gallery ${i + 1}`} fill className="object-cover" />
             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Button
@@ -189,16 +217,24 @@ export function GalleryUpload({ value, onChange }: GalleryUploadProps) {
           </div>
         ))}
 
-        {/* Add button */}
         <div
-          className="border-2 border-dashed rounded-lg aspect-square flex items-center justify-center cursor-pointer hover:border-primary/50 transition-colors"
+          className="border-2 border-dashed rounded-lg aspect-square flex flex-col items-center justify-center gap-1 cursor-pointer hover:border-primary/50 transition-colors px-1 text-center"
           onClick={() => document.getElementById("gallery-image-upload")?.click()}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              document.getElementById("gallery-image-upload")?.click();
+            }
+          }}
         >
           {uploading ? (
-            <div className="animate-spin h-5 w-5 border-2 border-primary border-t-transparent rounded-full" />
+            <div className="animate-spin h-5 w-5 border-2 border-primary border-t-transparent rounded-full shrink-0" />
           ) : (
-            <Plus className="h-5 w-5 text-muted-foreground" />
+            <Plus className="h-5 w-5 text-muted-foreground shrink-0" />
           )}
+          <span className="text-[10px] leading-tight text-muted-foreground sm:text-xs">หลายรูป</span>
         </div>
       </div>
 
@@ -206,17 +242,19 @@ export function GalleryUpload({ value, onChange }: GalleryUploadProps) {
         id="gallery-image-upload"
         type="file"
         accept="image/*"
+        multiple
         className="hidden"
         onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (file) uploadFile(file);
+          const list = e.target.files;
+          if (list?.length) uploadFiles(Array.from(list));
           e.target.value = "";
         }}
       />
 
-      {value.length > 0 && (
-        <p className="text-xs text-muted-foreground">{value.length} image(s) in gallery</p>
-      )}
+      <p className="text-xs text-muted-foreground">
+        {value.length > 0 ? `${value.length} รูปในแกลเลอรี — ` : null}
+        เลือกหลายไฟล์พร้อมกันได้ (Ctrl/Cmd+คลิก) หรือลากวางหลายรูปลงกริด
+      </p>
     </div>
   );
 }

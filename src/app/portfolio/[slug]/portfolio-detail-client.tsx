@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 import { stringArrayFromJson } from "@/lib/cms-display";
 import { RteHtmlWithLightbox } from "@/components/content/rte-html-with-lightbox";
+import { PortfolioGalleryLightbox } from "@/components/portfolio/portfolio-gallery-lightbox";
 
 export type PortfolioDetailPayload = {
   title: string;
@@ -25,6 +27,7 @@ export function PortfolioDetailClient({ item }: { item: PortfolioDetailPayload }
   const { t } = useTranslation();
   const tags = stringArrayFromJson(item.technologies);
   const gallery = stringArrayFromJson(item.gallery);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const dateLabel = item.completedAt
     ? new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long", day: "numeric" }).format(
@@ -98,16 +101,25 @@ export function PortfolioDetailClient({ item }: { item: PortfolioDetailPayload }
         <section className="border-b border-border/40 bg-muted/20 py-12">
           <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="mb-6 font-heading text-lg font-semibold">{t("pages.portfolioPage.gallery")}</h2>
+            <p className="mb-4 text-sm text-muted-foreground">คลิกรูปเพื่อดูขนาดใหญ่และเลื่อนดูรูปถัดไป</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
-              {gallery.map((url) => (
-                <div
-                  key={url}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/60 bg-muted shadow-sm"
+              {gallery.map((url, i) => (
+                <button
+                  key={`${url}-${i}`}
+                  type="button"
+                  className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/60 bg-muted shadow-sm outline-none ring-offset-background transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring"
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <Image src={url} alt="" fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
-                </div>
+                </button>
               ))}
             </div>
+            <PortfolioGalleryLightbox
+              images={gallery}
+              openIndex={lightboxIndex}
+              onClose={() => setLightboxIndex(null)}
+              onSelectIndex={setLightboxIndex}
+            />
           </div>
         </section>
       ) : null}

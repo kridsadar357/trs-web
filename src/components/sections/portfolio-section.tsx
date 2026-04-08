@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 import { gradientAt, stringArrayFromJson } from "@/lib/cms-display";
 import { cn } from "@/lib/utils";
 import { generateSlug } from "@/lib/slugify";
+import { portfolioDetailHref } from "@/lib/portfolio-slug";
 
 type PortfolioItem = {
   title: string;
@@ -115,7 +116,7 @@ export function PortfolioSection() {
             projects.map((project, index) => {
               const key =
                 apiItems.length > 0 && apiItems[index] ? apiItems[index]!.id : `${project.title}-${index}`;
-              const href = `/portfolio/${project.slug}`;
+              const href = portfolioDetailHref(String(project.slug || ""));
               return (
                 <article
                   key={key}

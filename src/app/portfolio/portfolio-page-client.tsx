@@ -9,6 +9,7 @@ import { CTASection } from "@/components/sections/cta-section";
 import { ArrowRight } from "lucide-react";
 import { gradientAt, stringArrayFromJson } from "@/lib/cms-display";
 import { cn } from "@/lib/utils";
+import { portfolioDetailHref } from "@/lib/portfolio-slug";
 
 type Project = {
   id?: string;
@@ -150,7 +151,7 @@ export function PortfolioPageClient() {
           ) : (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
               {allProjects.map((project, index) => {
-                const href = `/portfolio/${project.slug}`;
+                const href = portfolioDetailHref(project.slug);
                 const isFeatured = project.featured && project.fromApi;
                 return (
                   <article
