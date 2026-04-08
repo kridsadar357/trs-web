@@ -22,6 +22,7 @@ import {
   X,
   ChevronRight,
   Headphones,
+  UserCog,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -43,6 +44,7 @@ const sidebarLinkDefs: SidebarLink[] = [
   { href: "/admin/testimonials", label: "รีวิวลูกค้า", icon: Star },
   { href: "/admin/contacts", label: "ข้อความติดต่อ", icon: Mail },
   { href: "/admin/chat-agents", label: "แชทซัพพอร์ต", icon: Headphones, requireAdmin: true },
+  { href: "/admin/users", label: "ผู้ใช้แอดมิน", icon: UserCog, requireAdmin: true },
   { href: "/admin/settings", label: "ตั้งค่า", icon: Settings },
 ];
 

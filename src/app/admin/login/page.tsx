@@ -78,9 +78,6 @@ export default function AdminLoginPage() {
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
             </Button>
-            <p className="text-xs text-center text-muted-foreground">
-              ค่าเริ่มต้น: admin@trs.com / admin123
-            </p>
           </form>
         </CardContent>
       </Card>

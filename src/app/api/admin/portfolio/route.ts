@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sanitizePortfolioBody } from "@/lib/portfolio-sanitize";
 
 export async function GET() {
   const items = await prisma.portfolioItem.findMany({ orderBy: { createdAt: "desc" } });
@@ -8,22 +9,20 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    if (body.technologies && typeof body.technologies === "string") {
-      body.technologies = body.technologies.split(",").map((s: string) => s.trim()).filter(Boolean);
-    }
-    if (body.gallery && typeof body.gallery === "string") {
-      body.gallery = JSON.parse(body.gallery);
-    }
-    if (body.completedAt === "" || body.completedAt === undefined) {
-      body.completedAt = null;
-    }
-    const item = await prisma.portfolioItem.create({ data: body });
+    const raw = await request.json();
+    const data = sanitizePortfolioBody(raw);
+    const item = await prisma.portfolioItem.create({ data });
     return NextResponse.json(item, { status: 201 });
-  } catch (error: any) {
-    if (error.code === "P2002") {
-      return NextResponse.json({ error: "A portfolio item with this slug already exists" }, { status: 409 });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : "Failed to create portfolio item";
+    if (msg === "Invalid request body" || msg.includes("required")) {
+      return NextResponse.json({ error: msg }, { status: 400 });
     }
+    const code = typeof e === "object" && e !== null && "code" in e ? String((e as { code: string }).code) : "";
+    if (code === "P2002") {
+      return NextResponse.json({ error: "Slug นี้ถูกใช้แล้ว กรุณาเปลี่ยน slug" }, { status: 409 });
+    }
+    console.error("POST /api/admin/portfolio", e);
     return NextResponse.json({ error: "Failed to create portfolio item" }, { status: 500 });
   }
 }

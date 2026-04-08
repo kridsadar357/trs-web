@@ -13,6 +13,13 @@ export default function AdminSettingsPage() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [pwSaving, setPwSaving] = useState(false);
+  const [pwMessage, setPwMessage] = useState("");
+  const [pwError, setPwError] = useState("");
+
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((r) => r.json())
@@ -41,6 +48,34 @@ export default function AdminSettingsPage() {
     setSettings({ ...settings, [key]: value });
   };
 
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPwError("");
+    setPwMessage("");
+    if (newPassword !== confirmPassword) {
+      setPwError("รหัสผ่านใหม่ไม่ตรงกัน");
+      return;
+    }
+    setPwSaving(true);
+    try {
+      const res = await fetch("/api/admin/me/password", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword, newPassword }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "เปลี่ยนรหัสผ่านไม่สำเร็จ");
+      setPwMessage("เปลี่ยนรหัสผ่านแล้ว");
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err: unknown) {
+      setPwError(err instanceof Error ? err.message : "เปลี่ยนรหัสผ่านไม่สำเร็จ");
+    } finally {
+      setPwSaving(false);
+    }
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
@@ -55,6 +90,54 @@ export default function AdminSettingsPage() {
       </div>
 
       <div className="grid gap-6 max-w-3xl">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">โปรไฟล์ — เปลี่ยนรหัสผ่าน</CardTitle>
+            <p className="text-sm text-muted-foreground">ใช้รหัสผ่านปัจจุบันเพื่อตั้งรหัสใหม่ (อย่างน้อย 8 ตัวอักษร)</p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md">
+              {pwError && <p className="text-sm text-destructive">{pwError}</p>}
+              {pwMessage && <p className="text-sm text-green-600 dark:text-green-400">{pwMessage}</p>}
+              <div className="space-y-2">
+                <Label>รหัสผ่านปัจจุบัน</Label>
+                <Input
+                  type="password"
+                  autoComplete="current-password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>รหัสผ่านใหม่</Label>
+                <Input
+                  type="password"
+                  autoComplete="new-password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                  minLength={8}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>ยืนยันรหัสผ่านใหม่</Label>
+                <Input
+                  type="password"
+                  autoComplete="new-password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  minLength={8}
+                />
+              </div>
+              <Button type="submit" disabled={pwSaving}>
+                {pwSaving ? "กำลังบันทึก..." : "อัปเดตรหัสผ่าน"}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">General</CardTitle>
